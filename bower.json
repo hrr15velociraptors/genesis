@@ -1,0 +1,22 @@
+{
+  "name": "genesis",
+  "description": "Live video auctioning",
+  "main": "index.js",
+  "authors": [
+    "hrr15velociraptors"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/hrr15velociraptors/genesis",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-ui-router": "^0.2.18",
+    "socket.io-client": "^1.4.5"
+  }
+}
