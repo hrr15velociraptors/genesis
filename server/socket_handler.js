@@ -22,13 +22,15 @@ io.on('connection', function(socket){
 // register socket event with 'chat message' from client
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
+    // broadcast incoming message to all clients
+    io.emit('chat message', msg);
     console.log('message: ' + msg);
   });
 });
 
 // have server listen for socket connections at port 3000
 http.listen(3000, function(){
-  console.log('listening on *:3000');
+  console.log('SOCKET server listening on port: 3000');
 });
 
 module.exports = io;

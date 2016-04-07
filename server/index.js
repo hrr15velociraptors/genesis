@@ -10,7 +10,7 @@ var io = require('./socket_handler.js');
 var port = process.env.PORT || 8080;
 
 app.listen(port, function () {
-  console.log('Server listening on port: ' + port);
+  console.log('ROUTING server listening on port: ' + port);
 });
 
 // route any root GET to index.html
