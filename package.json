@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/hrr15velociraptors/genesis#readme",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
