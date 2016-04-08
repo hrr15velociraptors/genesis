@@ -24,6 +24,3 @@ node_modules/
 
 # WebStorm files
 .idea/
-
-# db folder
-db/
