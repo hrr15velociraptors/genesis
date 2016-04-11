@@ -5,8 +5,8 @@ module.exports = function(app, passport) {
       failureRedirect: '/signup'
   }));
 
-  app.post('/api/users/signin', ppassport.authenticate('signin', {
+  app.post('/api/users/signin', passport.authenticate('signin', {
     successRedirect: '/',
     failureRedirect: '/signin'
-  });
+  }));
 }

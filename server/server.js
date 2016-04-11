@@ -5,11 +5,8 @@ var passport = require('passport');
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var expressSession = require('express-session');
-var User = require('./../db/models').User;
 
 app = express();
-app.use(expressSession({secret: 'vodka'}));
 app.use(passport.initialize());
 app.use(passport.session());
 

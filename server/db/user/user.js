@@ -2,9 +2,6 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var relationship = require('mongoose-relationship');
 
-var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/genesis';
-mongoose.connect(mongoURI);
-
 var userSchema = mongoose.Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var User = require('/user/user');
-var Auction = require('/auction/auction');
+var User = require('./user/user');
+var Auction = require('./auction/auction');
 
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/genesis';
 
