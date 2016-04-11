@@ -10,12 +10,16 @@
       #messages li:nth-child(odd) { background: #eee; }
     </style>
   <body>
+
     <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+    <form ng-submit="broadcast(msg);">
+      <input type="text" ng-model="msg" placeholder="Write message here">
+      <button>Send</button>
     </form>
-
-
-
+    <ul ng-repeat="message in incomingMessage track by $index">
+      <li>
+          {{message}}
+      </li>
+    </ul>
   </body>
 </div>

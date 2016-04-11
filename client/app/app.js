@@ -2,7 +2,6 @@ angular.module('genesis', [
   // 'genesis.auction',
   'genesis.auth',
   'genesis.chat',
-  //'genesis.chat',
   // 'genesis.services',
   'ui.router',
   'btford.socket-io'

@@ -26,9 +26,9 @@ io.on('connection', function(socket){
 
 // register socket event with 'chat message' from client
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
+  socket.on('message sent', function(msg){
     // broadcast incoming message to all clients
-    io.emit('chat message', msg);
+    io.emit('message sent', msg);
     console.log('message: ' + msg);
   });
 });
