@@ -1,8 +1,10 @@
 angular.module('genesis', [
   // 'genesis.auction',
   'genesis.auth',
+  'genesis.chat',
   // 'genesis.services',
-  'ui.router'
+  'ui.router',
+  'btford.socket-io'
 ])
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.otherwise('/signin');
@@ -10,8 +12,8 @@ angular.module('genesis', [
   $stateProvider
   .state('auction', {
       url: '/auction',
-      templateUrl: 'app/views/auction.html',
-      controller: 'auctionController',
+      templateUrl: 'app/chat/chat.html',
+      controller: 'ChatController',
       authenticate: true
     })
   .state('signin', {
