@@ -1,6 +1,6 @@
 angular.module('genesis.auth', [])
 
-.controller('AuthController', function($scope, $location, $window, Auth) {
+.controller('AuthController', function($scope, $location, $window, Auth, $rootScope) {
   $scope.user = {};
 
   $scope.signin = function () {
@@ -8,6 +8,7 @@ angular.module('genesis.auth', [])
       .then(function (token) {
         $window.localStorage.setItem('com.genesis', token);
         $location.path('/auction');
+        $rootScope.user = $scope.user;
       })
       .catch(function (error) {
         console.error(error);
