@@ -2,7 +2,8 @@ angular.module('genesis', [
   // 'genesis.auction',
   'genesis.auth',
   'genesis.chat',
-  // 'genesis.services',
+  'genesis.services',
+  'genesis.video',
   'ui.router',
   'btford.socket-io'
 ])
@@ -12,9 +13,20 @@ angular.module('genesis', [
   $stateProvider
   .state('auction', {
       url: '/auction',
-      templateUrl: 'app/chat/chat.html',
-      controller: 'ChatController',
-      authenticate: true
+      authenticate: true,
+      views: {
+        '' : {
+          templateUrl: 'app/auction/auction.html'
+        },
+        'chat@auction': {
+          templateUrl: 'app/auction/chat/chat.html',
+          controller: 'ChatController'
+        },
+        'video@auction': {
+          templateUrl: 'app/auction/video/video.html',
+          controller: 'VideoController'
+        }
+      }
     })
   .state('signin', {
         url: '/signin',
@@ -26,6 +38,7 @@ angular.module('genesis', [
           templateUrl: 'app/auth/signup.html',
           controller: 'AuthController'
     })
+
 
   $httpProvider.interceptors.push('AttachTokens');
 })
