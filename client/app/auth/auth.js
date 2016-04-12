@@ -42,8 +42,8 @@ angular.module('genesis.auth', [])
       url: '/api/users/signin',
       data: user
     })
-    .then(function (resp) {
-      return resp.data.token;
+    .then(function (res) {
+      return res.data.access_token;
     });
   };
 
@@ -54,7 +54,7 @@ angular.module('genesis.auth', [])
       data: user
     })
     .then(function (res) {
-      return res.data.token;
+      return res.data.access_token;
     });
   };
 

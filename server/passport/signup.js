@@ -4,9 +4,7 @@ var bCrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
 module.exports = function(passport){
 
-	passport.use('signup', new LocalStrategy({
-    passReqToCallback: true
-  }, function (req, username, password, done) {
+	passport.use('signup', new LocalStrategy(function (username, password, done) {
     User.findOne({username: username})
       .then(function (user) {
         if (user) {
@@ -21,8 +19,7 @@ module.exports = function(passport){
               return done(err);
             }
             var token = jwt.encode(user, 'vodka');
-            console.log(req.res.token);
-            req.res.json({token: token});
+            newUser.access_token = token;
             return done(null, newUser);
           });
         }
