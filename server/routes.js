@@ -1,12 +1,10 @@
 module.exports = function(app, passport) {
 
   app.post('/api/users/signup', passport.authenticate('signup', {
-      successRedirect: '/',
-      failureRedirect: '/'
+      successRedirect: '/'
   }));
 
   app.post('/api/users/signin', passport.authenticate('signin', {
-    successRedirect: '/',
-    failureRedirect: '/'
+    successRedirect: '/'
   }));
 }

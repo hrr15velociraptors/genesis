@@ -1,6 +1,6 @@
 angular.module('genesis.chat', [])
 
-.controller('ChatController', function ($scope, Socket, $rootScope) {
+.controller('ChatController', function ($scope, Socket, $rootScope, Auth) {
 
   //connect to sockets when landing on page
   Socket.connect();
@@ -10,9 +10,15 @@ angular.module('genesis.chat', [])
     // we need to remove user from users array on backend
     Socket.disconnect(true);
   });
+  // for logging out and deleting local client user token/session
+  $scope.signout = function() {
+    //Give message to user for succesfull sign out
+    console.log('You have succesfully signed out');
+    Auth.signout();
+  };
 
   // pull user from root scope
-  var user = $rootScope.user.username;
+  var user = $scope.user.username;
 
   if (user) {
     Socket.emit('user joined', {username: user});
@@ -41,4 +47,3 @@ angular.module('genesis.chat', [])
 .factory('Socket', function (socketFactory) {
   return socketFactory();
 });
-

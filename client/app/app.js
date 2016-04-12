@@ -47,7 +47,6 @@ angular.module('genesis', [
   return attach;
 })
 .run(function ($rootScope, $state, Auth) {
-
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
    if (toState.authenticate && !Auth.isAuth()){
 
