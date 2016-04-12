@@ -18,9 +18,9 @@ angular.module('genesis.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
-
         $window.localStorage.setItem('com.genesis', token);
         $location.path('/auction');
+        $rootScope.user = $scope.user;
       })
       .catch(function (error) {
         console.error(error);
@@ -54,7 +54,7 @@ angular.module('genesis.auth', [])
       data: user
     })
     .then(function (res) {
-      return res.data.access_token;
+      return res.data.token;
     });
   };
 

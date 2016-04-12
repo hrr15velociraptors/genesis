@@ -2,8 +2,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('./../db/config').User;
 var bCrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
-module.exports = function(passport){
 
+module.exports = function(passport){
 	passport.use('signup', new LocalStrategy(function (username, password, done) {
     User.findOne({username: username})
       .then(function (user) {
