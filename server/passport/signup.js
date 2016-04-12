@@ -1,10 +1,12 @@
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./../db/config').User;
 var bCrypt = require('bcrypt-nodejs');
-
+var jwt = require('jwt-simple');
 module.exports = function(passport){
 
-	passport.use('signup', new LocalStrategy(function(username, password, done) {
+	passport.use('signup', new LocalStrategy({
+    passReqToCallback: true
+  }, function (req, username, password, done) {
     User.findOne({username: username})
       .then(function (user) {
         if (user) {
@@ -14,11 +16,13 @@ module.exports = function(passport){
             username: username,
             password: password
           });
-          newUser.save(function(err) {
+          newUser.save(function (err) {
             if(err) {
               return done(err);
             }
-            console.log('Create new user session here!');
+            var token = jwt.encode(user, 'vodka');
+            console.log(req.res.token);
+            req.res.json({token: token});
             return done(null, newUser);
           });
         }
