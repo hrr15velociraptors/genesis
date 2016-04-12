@@ -11,6 +11,9 @@ var port = process.env.PORT || 8080;
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+//current chat list users
+var users = [];
+
 // route any root GET to index.html
 app.get('/', function(req, res){
   res.sendfile('index.html');
@@ -19,19 +22,29 @@ app.get('/', function(req, res){
 // socket event handling
 io.on('connection', function(socket){
   console.log('socket has made contact');
+
   socket.on('disconnect', function() {
     console.log('a socket has been destroyed');
   });
-});
 
-// register socket event with 'chat message' from client
-io.on('connection', function(socket){
+  // register socket event with 'chat message' from client
   socket.on('message sent', function(msg){
     // broadcast incoming message to all clients
     io.emit('message sent', msg);
     console.log('message: ' + msg);
   });
+
+  socket.on('user joined', function (data) {
+    io.emit('add-user', {
+      username: data.username
+    });
+    username = data.username;
+    users.push(data.username);
+  });
+
 });
+
+
 
 http.listen(port, function () {
   console.log('ROUTING server listening on port: ' + port);
