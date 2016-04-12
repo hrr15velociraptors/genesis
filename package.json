@@ -7,8 +7,9 @@
     "node": "4.4.2"
   },
   "scripts": {
-    "start": "nodemon server/index.js",
-    "test": "test"
+    "start": "node server/index.js",
+    "test": "test",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
+    "bower": "^1.7.9",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "grunt": "^1.0.1",
