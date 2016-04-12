@@ -3,9 +3,9 @@ var relationship = require('mongoose-relationship');
 var timestamps = require('mongoose-timestamp');
 
 var bidSchema = mongoose.Schema({
-  price: Number,
-  user: {type: mongoose.Schema.ObjectId, ref: 'User'},
-  auction: {type: mongoose.Schema.ObjectId, ref: 'Auction'}
+  amount: {type: Number, required: true},
+  user: {type: mongoose.Schema.ObjectId, ref: 'User', childPath: 'bids'},
+  auction: {type: mongoose.Schema.ObjectId, ref: 'Auction', childPath: 'auctions'}
 });
 
 bidSchema.plugin(timestamps);

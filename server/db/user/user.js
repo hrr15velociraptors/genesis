@@ -9,7 +9,8 @@ var userSchema = mongoose.Schema({
   email: String,
   firstName: String,
   lastName: String,
-  auctions: [{type: mongoose.Schema.ObjectId, ref: 'Auction'}]
+  auctions: [{type: mongoose.Schema.ObjectId, ref: 'Auction'}],
+  bids: [{type: mongoose.Schema.ObjectId, ref: 'Bid'}]
 });
 
 userSchema.pre('save', function (next) {
