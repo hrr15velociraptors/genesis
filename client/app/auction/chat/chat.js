@@ -1,6 +1,6 @@
 angular.module('genesis.chat', [])
 
-.controller('ChatController', function ($scope, Socket, $rootScope, Auth) {
+.controller('ChatController', function ($scope, $window, Socket, Auth) {
 
   //connect to sockets when landing on page
   Socket.connect();
@@ -18,7 +18,7 @@ angular.module('genesis.chat', [])
   };
 
   // pull user from root scope
-  var user = $scope.user.username;
+  var user = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   if (user) {
     Socket.emit('user joined', {username: user});
