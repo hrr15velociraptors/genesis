@@ -1,26 +1,54 @@
-var Bid = require('./../db/config').Bid;
-var Auction = require('./../db/config').Auction;
+var jwt = require('jsonwebtoken');
+var db = require('./../db/config');
+var Bid = db.Bid;
+var Auction = db.Auction;
+var User = db.User;
 
 module.exports.postBid = function (req, res) {
-  res.status(200).send('ok')
-
+  new Bid(req.body).save(function () {
+    res.status(200).send('ok');
+  });
 }
 
 module.exports.deleteBid = function (req, res) {
-  res.status(200).send('ok')
-
+  res.status(200).send('ok');
 }
 
 module.exports.postAuction = function (req, res) {
-  res.status(200).send('ok')
-
+  new Auction(req.body).save(function () {
+    res.status(200).send('ok');
+  });
 }
 
 module.exports.modifyAuction = function (req, res) {
-  res.status(200).send('ok')
+  res.status(200).send('ok');
 
 }
 
 module.exports.deleteAuction = function (req, res) {
-  res.status(200).send('ok')
+  res.status(200).send('ok');
+}
+
+module.exports.getUserInfo = function (req, res) {
+
+  User.findOne(req.query, function (err, user) {
+    if (err) {
+      console.error(err);
+    }
+    if (!user) {
+      console.error('User not found');
+    }
+
+    res.json(user);
+  })
+}
+
+module.exports.signin = function (req, res) {
+  var token = jwt.sign(req.user, 'vodka');
+  res.send({'token': token, username: req.user.username});
+}
+
+module.exports.signup = function (req, res) {
+  var token = jwt.sign(req.user, 'vodka');
+  res.send({'token': token, username: req.user.username});
 }

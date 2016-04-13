@@ -5,7 +5,7 @@ var timestamps = require('mongoose-timestamp');
 var auctionSchema = mongoose.Schema({
   user: {type: mongoose.Schema.ObjectId, ref: 'User', childPath: 'auctions'},
   bids: [{type: mongoose.Schema.ObjectId, ref: 'Bid', childPath: 'auction'}],
-  title: String,
+  title: {type: String, required: true}
 });
 
 auctionSchema.plugin(timestamps);

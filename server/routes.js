@@ -2,20 +2,18 @@ var handler = require('./lib/request-handler');
 
 module.exports = function(app, passport) {
 
-  app.post('/api/users/signup', passport.authenticate('signup', {
-      successRedirect: '/'
-  }));
+  app.post('/api/users/signup', passport.authenticate('signup'), handler.signup);
 
-  app.post('/api/users/signin', passport.authenticate('signin', {
-    successRedirect: '/'
-  }));
+  app.post('/api/users/signin', passport.authenticate('signin'), handler.signin);
+
+  app.get('/api/users', passport.authenticate('jwt'), handler.getUserInfo);
 
   app.route('/api/bid')
-    .post(handler.postBid)
-    .delete(handler.deleteBid);
+    .post(passport.authenticate('jwt'), handler.postBid)
+    .delete(passport.authenticate('jwt'), handler.deleteBid);
 
   app.route('/api/auction')
-    .post(handler.postAuction)
-    .delete(handler.deleteAuction)
-    .put(handler.modifyAuction);
+    .post(passport.authenticate('jwt'), handler.postAuction)
+    .delete(passport.authenticate('jwt'), handler.deleteAuction)
+    .put(passport.authenticate('jwt'), handler.modifyAuction);
 }

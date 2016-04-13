@@ -18,6 +18,7 @@ app.use(morgan('dev'));
 
 require('./passport/init')(passport);
 require('./passport/signup')(passport);
+require('./passport/signin')(passport);
 
 // rout set up
 require('./routes')(app, passport);
