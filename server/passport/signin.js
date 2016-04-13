@@ -20,8 +20,6 @@ module.exports = function (passport) {
         if (!isMatch) {
           return done(null, false);
         }
-        var token = jwt.encode(user, 'vodka');
-        user.access_token = token;
         done(null, user);
       });
     });

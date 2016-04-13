@@ -1,5 +1,6 @@
 angular.module('genesis', [
   // 'genesis.auction',
+  'genesis.profile',
   'genesis.auth',
   'genesis.chat',
   'genesis.services',
@@ -12,8 +13,8 @@ angular.module('genesis', [
 
   $stateProvider
   .state('auction', {
-      url: '/auction',
       authenticate: true,
+      url: '/auction',
       views: {
         '' : {
           templateUrl: 'app/auction/auction.html'
@@ -38,7 +39,12 @@ angular.module('genesis', [
           templateUrl: 'app/auth/signup.html',
           controller: 'AuthController'
     })
-
+  .state('profile', {
+          authenticate: true,
+          url: '/profile',
+          templateUrl: 'app/profile/profile.html',
+          controller: 'ProfileController'
+    })
 
   $httpProvider.interceptors.push('AttachTokens');
 })
@@ -49,9 +55,9 @@ angular.module('genesis', [
   // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('genesis.app');
+      var jwt = JSON.parse($window.localStorage.getItem('com.genesis'));
       if (jwt) {
-        object.headers['x-access-token'] = jwt;
+        object.headers['x-access-token'] = jwt.token;
       }
       object.headers['Allow-Control-Allow-Origin'] = '*';
       return object;
