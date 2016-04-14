@@ -8,7 +8,7 @@ angular.module('genesis.auth', [])
       .then(function (data) {
         console.log(data);
         $window.localStorage.setItem('com.genesis', JSON.stringify(data));
-        $location.path('/profile');
+        $location.path('/auction');
       })
       .catch(function (error) {
         console.error(error);
@@ -20,7 +20,7 @@ angular.module('genesis.auth', [])
       .then(function (data) {
         console.log(data);
         $window.localStorage.setItem('com.genesis', JSON.stringify(data));
-        $location.path('/profile');
+        $location.path('/auction');
       })
       .catch(function (error) {
         console.error(error);

@@ -6,7 +6,7 @@ angular.module('genesis', [
   'genesis.services',
   'genesis.video',
   'ui.router',
-  'btford.socket-io'
+  'pubnub.angular.service'
 ])
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.otherwise('/signin');

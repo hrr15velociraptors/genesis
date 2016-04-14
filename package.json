@@ -37,6 +37,7 @@
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-shell": "^1.2.1",
     "jsonwebtoken": "^5.7.0",
+    "jwt-simple": "^0.5.0",
     "mongoose": "^4.4.11",
     "mongoose-relationship": "^0.1.5",
     "mongoose-timestamp": "^0.5.0",
