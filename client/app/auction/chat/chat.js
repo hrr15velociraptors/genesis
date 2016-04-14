@@ -27,7 +27,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
           publish_key: pub_sub[0],
           subscribe_key: pub_sub[1],
           ssl: true,
-          uuid: $scope.uuid
+          uuid: user
       });
 
       $scope.messages = [];
@@ -49,8 +49,8 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
               channel: $scope.channel,
               message: {
                   content: $scope.messageContent,
-                  sender_uuid: $scope.uuid,
-                  date: new Date()
+                  sender_uuid: user,
+                  date: moment().format("hh:mm:ss")
               },
               callback: function(m) {
                   console.log(m);

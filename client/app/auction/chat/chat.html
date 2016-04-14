@@ -1,53 +1,26 @@
 <div id="auction">
-  <button ng-click="signout()">Logout</button>
-    <style>
-      /** { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 20px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }*/
-    </style>
+  <button class="btn btn-primary" ng-click="signout()">Logout</button>
   <body ng-controller="ChatController">
 
     <!-- View messages -->
     <ul class="collection">
-      <li ng-repeat="message in messages">
-        <span class="title">Anonymous robot #{{ message.sender_uuid }}</span>
-        <p><span class="message-date">{{ message.date }}</span></br> {{ message.content }}</p>
-      </li>
-    </ul>
-
-
-    <!-- SOCKET IO STUFF -->
-    <!-- <ul id="messages"></ul>
-    <form ng-submit="broadcast(msg);">
-      <input type="text" ng-model="msg" placeholder="Write message here">
-      <button>Send</button>
-    </form>
-    <ul ng-repeat="message in messages track by $index">
-      <li>
-           {{message.username}}: {{message.message}}
-      </li>
-    </ul> -->
-
-
+      <li class="clearfix collection-body" ng-repeat="message in messages">
+        <span class="message-date">[{{ message.date }}]</span>
+        <span class="title">{{ message.sender_uuid }}</span>
+        : {{ message.content }}
+      <br></li>
     <!-- Post messages -->
-    <footer class="teal">
+    <div>
       <form ng-submit="sendMessage()" class="container">
         <div class="row">
-            <input ng-model="messageContent" type="text" placeholder="Type your message" >
-            <button type="submit">Send</button>
-            <span class="chip left">
-              Anonymous robot #{{uuid}}
-            </span>
+            <input class="chatbox" ng-model="messageContent" type="text" placeholder="Type your message" >
+            <button class="btn btn-primary" type="submit">Send</button>
           <div class="input-field col s2">
-            <button type="submit"></button>
           </div>
         </div>
        </form>
-    </footer>
+    </div>
+    </ul>
+
   </body>
 </div>
