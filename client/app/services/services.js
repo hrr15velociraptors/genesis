@@ -58,6 +58,9 @@ angular.module('genesis.services', ['pubnub.angular.service'])
       console.log(streamName);
       ctrl.addLocalStream(video_out);
       ctrl.stream();  // Begin streaming video
+    ctrl.receive(function(session){
+        session.ended(function(session) {ctrl.getVideoElement(session.number).remove(); });
+    });
     });
     ctrl.streamPresence(function(m){ here_now.innerHTML=m.occupancy; });
     return false;  // So form does not submit
@@ -84,14 +87,22 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     });
     ctrl.receive(function(session){
         session.connected(function(session){ video_out.appendChild(session.video); });
+        session.ended(function(session) {ctrl.getVideoElement(session.number).remove(); });
     });
     ctrl.streamPresence(function(m){ here_now.innerHTML=m.occupancy; });
     return false;  // Prevent form from submitting
   };
 
+  var end = function (keys) {
+    ctrl.toggleVideo('auction-name');
+    ctrl.toggleAudio('auction-name');
+    ctrl.hangup();
+  };
+
   return {
     stream: stream,
-    watch: watch
+    watch: watch,
+    end: end
   };
 
 });
