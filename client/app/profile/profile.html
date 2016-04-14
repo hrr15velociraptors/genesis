@@ -103,7 +103,7 @@
             </div>
 
 
-            <div ng-controlller='CreateAucController' class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+            <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
                  aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -119,9 +119,8 @@
                     </h4>
                   </div>
 
-                  <!-- Modal Body -->
                   <div class="modal-body">
-                    <form role="form">
+                    <form ng-controller='CreateAucController' role="form" ng-submit='createAuction()'>
                       <div class="form-group">
                         <label for="auctionname">Auction Title</label>
                           <input ng-model='auction.title' type="text" class="form-control"
