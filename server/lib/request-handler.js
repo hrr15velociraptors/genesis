@@ -29,6 +29,10 @@ module.exports.getAuction = function (req, res) {
   res.send(200).send('sending auction data');
 }
 
+module.exports.getAuctions = function (req, res) {
+  
+};
+
 module.exports.modifyAuction = function (req, res) {
   res.status(200).send('ok');
 

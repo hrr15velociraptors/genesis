@@ -111,7 +111,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
   
   // retrieve data from single auction
   var getAuction = function (id) {
-    return $http.get('/auctions/:' + id)
+    return $http.get('/auctions/' + id)
     .then(function (auction) {
       auction = auction.data;
       return auction;
