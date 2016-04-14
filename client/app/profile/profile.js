@@ -10,6 +10,7 @@ angular.module('genesis.profile',  [])
   $scope.auction = {};
 
   $scope.createAuction = function () {
+    console.log($scope.auction);
       return $http({
         method: 'POST',
         url: '/api/users/auctions',
