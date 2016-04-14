@@ -102,55 +102,54 @@
               </div>
             </div>
 
-// Popup modal for creating an auction
 
-            <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+            <div ng-controlller='CreateAucController' class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
                  aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <button type="button" class="close"
-                               data-dismiss="modal">
-                                   <span aria-hidden="true">&times;</span>
-                                   <span class="sr-only">Close</span>
-                            </button>
-                            <h4 class="modal-title" id="myModalLabel">
-                              Creating an Auction
-                            </h4>
-                        </div>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <button type="button" class="close"
+                      data-dismiss="modal">
+                      <span aria-hidden="true">&times;</span>
+                      <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                      Creating an Auction
+                    </h4>
+                  </div>
 
-                        <!-- Modal Body -->
-                        <div class="modal-body">
-
-                            <form role="form">
-                              <div class="form-group">
-                                <label for="auctionname">Auction Name</label>
-                                  <input type="text" class="form-control"
-                                  id="auctionname" placeholder="Enter Name"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="description">Password</label>
-                                  <input type="text" class="form-control"
-                                      id="description" placeholder="Description"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="sprice">Starting Price</label>
-                                  <input type="number" class="form-control"
-                                      id="sprice" placeholder="Price"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="rprice">Reserved Price</label>
-                                  <input type="number" class="form-control"
-                                      id="rprice" placeholder="Price"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="edate">End Date</label>
-                                  <input type="datetime" class="form-control"
-                                      id="edate" placeholder="Date"/>
-                              </div>
-                              <button type="submit" class="btn btn-default">Save Auction</button>
-                            </form>
-
-
-                        </div>
+                  <!-- Modal Body -->
+                  <div class="modal-body">
+                    <form role="form">
+                      <div class="form-group">
+                        <label for="auctionname">Auction Title</label>
+                          <input ng-model='auction.title' type="text" class="form-control"
+                          id="auctiontitle" placeholder="Enter Title"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                          <textarea ng-model='auction.description' height='200' size='250' type="text" class="form-control"
+                            id="description" placeholder="Description"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="sprice">Starting Price</label>
+                          <input ng-model='auction.sprice' type="number" class="form-control"
+                            id="sprice" placeholder="Price"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="rprice">Reserved Price</label>
+                          <input ng-model='auction.rprice' type="number" class="form-control"
+                            id="rprice" placeholder="Price"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="duration">Auction Duration</label>
+                          <input ng-model='auction.duration' type="number" class="form-control"
+                            id="duration" placeholder="Enter Duration in Minutes"/>
+                      </div>
+                      <button type="submit" class="btn btn-default">Save Auction</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
