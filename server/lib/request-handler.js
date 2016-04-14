@@ -20,6 +20,15 @@ module.exports.postAuction = function (req, res) {
   });
 }
 
+module.exports.getAuction = function (req, res) {
+  // API endpoint = /auctions/:id
+  
+  // authenticate with jwt
+  var id = req.params;
+  // send auction data associated with id value
+  res.send(200).send('sending auction data');
+}
+
 module.exports.modifyAuction = function (req, res) {
   res.status(200).send('ok');
 

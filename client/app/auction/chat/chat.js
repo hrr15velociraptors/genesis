@@ -1,6 +1,6 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
-.controller('ChatController', function ($window, $scope, $rootScope, Auth, Pubnub, Keys) {
+.controller('ChatController', function ($window, $scope, Auth, Pubnub, Keys) {
 
   // for logging out and deleting local client user token/session
   $scope.signout = function() {
@@ -11,7 +11,8 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
 
   //disconnect when leaving page
   $scope.$on('$locationChangeStart', function(event) {
-    // we need to remove user from users array on backend
+    // SOCKET.IO => we need to remove user from users array on backend
+    // disconnect from Pubnub message/video channels
   });
 
   // pull user from browser local storage
@@ -66,7 +67,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
           channel: $scope.channel,
           triggerEvents: ['callback']
       });
-
+      
       // Listening to messages sent.
       $scope.$on(Pubnub.getMessageEventNameFor($scope.channel), function(ngEvent, m) {
           $scope.$apply(function() {
