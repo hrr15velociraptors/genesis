@@ -25,7 +25,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
   // Wrap videochat controller in promise, ensure access to keys
   return $http.get('/keys').then(function(keys) {
       console.log('here are the keys on client:');
-      console.log(keys);
+      // console.log(keys);
       var pub_sub = keys.data;
       return pub_sub;
   });
@@ -94,4 +94,32 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     watch: watch
   };
 
+})
+.factory('Auction', function ($http) {
+  
+  var auctions;
+  var auction;
+  
+  // retrieve data on all current auctions
+  var getAuctions = function () {
+    return $http.get('/auctions')
+      .then(function (auctions) {
+        auctions = auctions.data;
+        return auctions;
+      });
+  };
+  
+  // retrieve data from single auction
+  var getAuction = function (id) {
+    return $http.get('/auctions/:' + id)
+    .then(function (auction) {
+      auction = auction.data;
+      return auction;
+    });
+  };
+  
+  return {
+    getAuctions: getAuctions,
+    getAuction: getAuction
+  };
 });
