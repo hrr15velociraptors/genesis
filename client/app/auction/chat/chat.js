@@ -1,6 +1,6 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
-.controller('ChatController', function ($window, $scope, Auth, Pubnub, Keys) {
+.controller('ChatController', function ($window, $scope, Auth, Pubnub, Keys, Auction) {
 
   // for logging out and deleting local client user token/session
   $scope.signout = function() {
