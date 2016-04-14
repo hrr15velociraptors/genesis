@@ -15,8 +15,8 @@
     <!-- View messages -->
     <ul class="collection">
       <li ng-repeat="message in messages">
-        <span class="title">Anonymous robot #{{ message.sender_uuid }}</span>
-        <p><span class="message-date">{{ message.date }}</span></br> {{ message.content }}</p>
+        <span class="title">{{ message.sender_uuid }}: {{ message.content }}</span>
+        <p><span class="message-date">{{ message.date }}</span></br></p>
       </li>
     </ul>
 
@@ -41,10 +41,9 @@
             <input ng-model="messageContent" type="text" placeholder="Type your message" >
             <button type="submit">Send</button>
             <span class="chip left">
-              Anonymous robot #{{uuid}}
+              Anonymous robot {{uuid}}
             </span>
           <div class="input-field col s2">
-            <button type="submit"></button>
           </div>
         </div>
        </form>
