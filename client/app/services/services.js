@@ -76,7 +76,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     });
     var ctrl = window.ctrl = CONTROLLER(phone, true);
     ctrl.ready(function(){
-      console.log(num);
       ctrl.isStreaming(num, function(isOn){
         if (isOn) ctrl.joinStream(num);
         else alert("User is not streaming!");
@@ -84,14 +83,24 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     });
     ctrl.receive(function(session){
         session.connected(function(session){ video_out.appendChild(session.video); });
+        session.ended(function(session) {ctrl.getVideoElement(session.number).remove(); });
     });
     ctrl.streamPresence(function(m){ here_now.innerHTML=m.occupancy; });
     return false;  // Prevent form from submitting
   };
 
+  var end = function (keys) {
+    //turns video and audio off when ended
+    ctrl.toggleVideo('auction-name');
+    ctrl.toggleAudio('auction-name');
+    //disconnects users
+    ctrl.hangup();
+  };
+
   return {
     stream: stream,
-    watch: watch
+    watch: watch,
+    end: end
   };
 
 })

@@ -14,6 +14,10 @@ angular.module('genesis.video', ['pubnub.angular.service'])
         Video.watch(pub_sub);
     };
 
+    $scope.end = function() {
+        Video.end(pub_sub);
+    };
+
   });
 
 });
