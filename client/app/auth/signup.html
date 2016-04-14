@@ -1,26 +1,3 @@
-<!-- <div id='signup'>
-  <h1>signup</h1>
-  <form name="signupForm" ng-submit='signup()'>
-    <p> First Name:
-    <input type="text" ng-model='user.firstName'>
-    </p>
-    <p> Last Name:
-    <input type="text" ng-model='user.lastName'>
-    </p>
-    <p> Email:
-    <input type='email' ng-model='user.email'>
-    </p>
-    <p> Username:
-    <input type='text' ng-model='user.username'>
-    </p>
-    <p> Password:
-    <input type="password" ng-model='user.password'>
-    </p>
-    <button>signup</button>
-  </form>
-  <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
-</div> -->
-
 <div class="container">
     <h1>Sign up</h1>
   	<hr>
@@ -48,19 +25,19 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="Jane">
+              <input class="form-control" type="text" ng-model='user.firstName'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="Bishop">
+              <input class="form-control" type="text" ng-model='user.lastName'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="janesemail@gmail.com">
+              <input class="form-control" type="text" ng-model='user.email'>
             </div>
           </div>
           <div class="form-group">
@@ -83,25 +60,25 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
             <div class="col-md-8">
-              <input class="form-control" type="text" value="janeuser">
+              <input class="form-control" required type="text" ng-model='user.username'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
+              <input name="password" class="form-control" type="password" required ng-model='user.password'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Confirm password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
+              <input name="confirm_password" class="form-control" type="password"
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Save Changes" ng-submit='signup()'>
+              <input type="button" class="btn btn-primary" value="Save Changes" ng-click='signup()'>
               <span></span>
               <input href="#/signin" type="reset" class="btn btn-default" value="Signin">
             </div>

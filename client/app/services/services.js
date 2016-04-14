@@ -10,7 +10,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         username: username
       }
     }).then(function (res) {
-      console.log('username is '+username);
+      console.log('username is '+ username);
       return res.data;
     })
   };
