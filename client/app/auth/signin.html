@@ -1,9 +1,14 @@
-<div id='signin'>
-  <h1>signin</h1>
-  <form name="signinForm" ng-submit='signin()'>
-    <input type='text' ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
-    <button>signin</button>
+
+<div class="container">
+
+  <form class="form-signin" ng-submit='signin()'>
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus ng-model='user.username'>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model='user.password'>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
   </form>
-  <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
+
 </div>
