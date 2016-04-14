@@ -2,19 +2,13 @@
 
   <!-- PubNub Video Embed -->
   <div id="vid-box"><!-- Stream goes here --></div>
-
-  <!-- Check user for auction id - user id match on DB, then disable "watch" for auction owner -->
-  <form name="streamForm" id="stream" ng-submit="stream('auction1');">
-      <button>Start Auction</button>
-      <div id="stream-info">Live Viewers: <span id="here-now">0</span></div>
-  </form>
-  
-  <form name="endStream" ng-submit="end('auction1');">
-    <button>End Auction</button>
+  <form name="streamForm" id="stream" ng-submit="stream()">
+      <button>Test Stream</button>
+      <div id="stream-info">Audience: <span id="here-now">0</span></div>
   </form>
 
-  <!-- Default selected for viewers of auction -->
-  <form name="watchForm" id="watch" ng-submit="watch('auction1');">
-    <button>Join Auction</button>
+  <button ng-click="end()">End Stream</button>
+  <form name="watchForm" id="watch" ng-submit="watch()">
+    <button>Watch Test Stream</button>
   </form>
 </div>
