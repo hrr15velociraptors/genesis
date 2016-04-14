@@ -10,9 +10,19 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
     </style>
-  <body>
+  <body ng-controller="ChatController">
+  
+    <!-- View messages -->
+    <ul class="collection">
+      <li ng-repeat="message in messages">
+        <span class="title">Anonymous robot #{{ message.sender_uuid }}</span>
+        <p><span class="message-date">{{ message.date }}</span></br> {{ message.content }}</p>
+      </li>
+    </ul> 
+    
 
-    <ul id="messages"></ul>
+    <!-- SOCKET IO STUFF -->
+    <!-- <ul id="messages"></ul>
     <form ng-submit="broadcast(msg);">
       <input type="text" ng-model="msg" placeholder="Write message here">
       <button>Send</button>
@@ -21,6 +31,23 @@
       <li>
            {{message.username}}: {{message.message}}
       </li>
-    </ul>
+    </ul> -->
+    
+    
+    <!-- Post messages -->
+    <footer class="teal">
+      <form ng-submit="sendMessage()" class="container">
+        <div class="row">
+            <input ng-model="messageContent" type="text" placeholder="Type your message" >
+            <button type="submit">Send</button>
+            <span class="chip left">
+              Anonymous robot #{{uuid}}
+            </span>
+          <div class="input-field col s2">
+            <button type="submit"></button>
+          </div>
+        </div>
+       </form>
+    </footer>
   </body>
 </div>

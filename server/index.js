@@ -1,15 +1,10 @@
-// EXPRESS ROUTING
+// ROUTING
 var app = require('./server');
 
-/*
-  CLIENT ROUTING
-*/
+// ENV variables
 var port = process.env.PORT || 8080;
-
-// mount socket.io onto dedicated server
-// socket communication handling
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var publish_key = process.env.PUB_KEY;
+var subscribe_key = process.env.SUB_KEY;
 
 //current chat list users
 var users = [];
@@ -19,33 +14,17 @@ app.get('/', function(req, res){
   res.sendfile('index.html');
 });
 
-// socket event handling
-io.on('connection', function(socket){
-  console.log('socket has made contact');
-
-  socket.on('disconnect', function() {
-    console.log('a socket has been destroyed');
-  });
-
-  // register socket event with 'chat message' from client
-  socket.on('message sent', function(msg){
-    // broadcast incoming message to all clients
-    io.emit('message sent', msg);
-    console.log('message: ' + msg);
-  });
-
-  socket.on('user joined', function (data) {
-    io.emit('add-user', {
-      username: data.username
-    });
-    username = data.username;
-    users.push(data.username);
-  });
-
+// route for client videochat
+app.get('/keys', function(req, res) {
+  res.send([publish_key, subscribe_key]);
 });
 
-
-
-http.listen(port, function () {
+app.listen(port, function () {
   console.log('ROUTING server listening on port: ' + port);
 });
+
+exports = {
+  port: port,
+  publish_key: publish_key,
+  subscribe_key: subscribe_key
+};

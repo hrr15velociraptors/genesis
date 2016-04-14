@@ -1,17 +1,19 @@
-angular.module('genesis.video', [])
+angular.module('genesis.video', ['pubnub.angular.service'])
 
-.controller('VideoController', function() {
-  console.log('hey');
+.controller('VideoController', function($scope, Keys, Video) {
+  
+  // need access to keys
+  Keys.then(function(pub_sub) {
+    
+    // PubNub Video Functionality
+    $scope.stream = function() {
+        Video.stream(pub_sub);
+    };
+
+    $scope.watch = function() {
+        Video.watch(pub_sub);
+    };
+    
+  });
+  
 });
-// 'use strict';
-
-// var rtc = require('rtc');
-// var rtcSession = rtc({room:'test-room'});
-
-// rtcSession.on('ready', function(room) {
-//   console.log('ready to rumble some video');
-//   console.log(room);
-// });
-// // console.log(rtc);
-
-// exports = rtc;
