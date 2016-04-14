@@ -46,7 +46,7 @@ angular.module('genesis', [
           controller: 'ProfileController'
     })
 
-  $httpProvider.interceptors.push('AttachTokens');
+  $httpProvider.interceptors.push('AttachTokens');0
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
@@ -55,8 +55,9 @@ angular.module('genesis', [
   // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
-      var jwt = JSON.parse($window.localStorage.getItem('com.genesis'));
+      var jwt = $window.localStorage.getItem('com.genesis');
       if (jwt) {
+        jwt = JSON.parse(jwt);
         object.headers['x-access-token'] = jwt.token;
       }
       object.headers['Allow-Control-Allow-Origin'] = '*';
@@ -66,9 +67,8 @@ angular.module('genesis', [
   return attach;
 })
 .run(function ($rootScope, $state, Auth) {
-  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-   if (toState.authenticate && !Auth.isAuth()){
-
+  $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams){
+   if (toState.authenticate && !Auth.isAuth()) {
      $state.transitionTo("signin");
      event.preventDefault();
    }

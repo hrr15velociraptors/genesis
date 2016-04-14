@@ -6,6 +6,7 @@ angular.module('genesis.auth', [])
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (data) {
+        console.log(data);
         $window.localStorage.setItem('com.genesis', JSON.stringify(data));
         $location.path('/profile');
       })
@@ -17,6 +18,7 @@ angular.module('genesis.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (data) {
+        console.log(data);
         $window.localStorage.setItem('com.genesis', JSON.stringify(data));
         $location.path('/profile');
       })
