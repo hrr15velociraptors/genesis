@@ -18,7 +18,7 @@ angular.module('genesis.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (data) {
-        console.log(data);
+        console.log('BOOOOOOO');
         $window.localStorage.setItem('com.genesis', JSON.stringify(data));
         $location.path('/auction');
       })
@@ -27,7 +27,24 @@ angular.module('genesis.auth', [])
       });
   };
 })
-
+// .directive('compareTo', function() {
+//   return {
+//     require: "ngModel",
+//     scope: {
+//       otherModelValue: "=compareTo"
+//     },
+//     link: function(scope, element, attributes, ngModel) {
+//
+//       ngModel.$validators.compareTo = function(modelValue) {
+//         return modelValue == scope.otherModelValue;
+//       };
+//
+//       scope.$watch("otherModelValue", function() {
+//         ngModel.$validate();
+//       });
+//     }
+//   };
+// })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
