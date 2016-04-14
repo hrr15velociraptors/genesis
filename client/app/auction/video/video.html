@@ -1,17 +1,14 @@
 <div id="video">
+
   <!-- PubNub Video Embed -->
   <div id="vid-box"><!-- Stream goes here --></div>
 
   <form name="streamForm" id="stream" ng-submit="stream(this);">
-      <!-- <input type="text" name="streamname" id="streamname" placeholder="Pick a stream name!" /> -->
-      <!-- <input type="submit" name="stream_submit" value="Stream"> -->
       <button>Test Stream</button>
-      <div id="stream-info">Watching: <span id="here-now">0</span></div>
+      <div id="stream-info">Audience: <span id="here-now">0</span></div>
   </form>
 
   <form name="watchForm" id="watch" ng-submit="watch(this);">
-    <!-- <input type="text" name="number" placeholder="Enter stream to join!" /> -->
-    <!-- <input type="submit" value="Watch"/> -->
     <button>Watch Test Stream</button>
   </form>
 </div>
