@@ -30,17 +30,7 @@ module.exports.deleteAuction = function (req, res) {
 }
 
 module.exports.getUserInfo = function (req, res) {
-
-  User.findOne(req.query, function (err, user) {
-    if (err) {
-      console.error(err);
-    }
-    if (!user) {
-      console.error('User not found');
-    }
-
-    res.json(user);
-  })
+  res.json(req.user);
 }
 
 module.exports.signin = function (req, res) {
