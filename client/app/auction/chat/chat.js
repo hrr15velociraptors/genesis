@@ -8,18 +8,18 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
     console.log('You have succesfully signed out');
     Auth.signout();
   };
-  
+
   //disconnect when leaving page
   $scope.$on('$locationChangeStart', function(event) {
     // we need to remove user from users array on backend
   });
-  
-  // pull user from root scope
+
+  // pull user from browser local storage
   var user = JSON.parse($window.localStorage.getItem('com.genesis')).username;
   console.log(user);
-  
+
   var pub_sub;
-  
+
   // on controller load, grab keys from index.js
   Keys.then(function(pub_sub) {
       // Please signup to PubNub to use your own keys: https://admin.pubnub.com/
@@ -29,19 +29,19 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
           ssl: true,
           uuid: $scope.uuid
       });
-      
+
       $scope.messages = [];
-      
+
       // define 'Auction Name' for channel param? Pubnub needs messages-channel
       $scope.channel = 'messages-channel';
 
       $scope.messageContent = '';
       // Generating a random uuid between 1 and 100 using utility function from lodash library.
       $scope.uuid = 10000;
-   
+
       // Send the messages over PubNub Network
       $scope.sendMessage = function() {
-         // Don't send an empty message 
+         // Don't send an empty message
          if (!$scope.messageContent || $scope.messageContent === '') {
               return;
           }

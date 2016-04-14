@@ -1,10 +1,10 @@
 angular.module('genesis.video', ['pubnub.angular.service'])
 
 .controller('VideoController', function($scope, Keys, Video) {
-  
+
   // need access to keys
   Keys.then(function(pub_sub) {
-    
+
     // PubNub Video Functionality
     $scope.stream = function() {
         Video.stream(pub_sub);
@@ -13,7 +13,7 @@ angular.module('genesis.video', ['pubnub.angular.service'])
     $scope.watch = function() {
         Video.watch(pub_sub);
     };
-    
+
   });
-  
+
 });

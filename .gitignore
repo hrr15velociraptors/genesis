@@ -21,6 +21,7 @@ client/lib/
 
 # Node modules
 node_modules/
+.env
 
 # WebStorm files
 .idea/
