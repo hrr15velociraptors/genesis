@@ -1,6 +1,9 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
-.controller('ChatController', function ($window, $scope, Auth, Pubnub, Keys, Auction) {
+.controller('ChatController', function ($window, $scope, $location, Auth, Pubnub, Keys, Auction) {
+
+  //set URL ID as channel
+  var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
 
   // for logging out and deleting local client user token/session
   $scope.signout = function() {
@@ -34,7 +37,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
       $scope.messages = [];
 
       // define 'Auction Name' for channel param? Pubnub needs messages-channel
-      $scope.channel = 'messages-channel';
+      $scope.channel = id;
 
       $scope.messageContent = '';
       // Generating a random uuid between 1 and 100 using utility function from lodash library.
@@ -67,7 +70,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
           channel: $scope.channel,
           triggerEvents: ['callback']
       });
-      
+
       // Listening to messages sent.
       $scope.$on(Pubnub.getMessageEventNameFor($scope.channel), function(ngEvent, m) {
           $scope.$apply(function() {
