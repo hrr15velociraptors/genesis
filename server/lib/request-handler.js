@@ -21,12 +21,13 @@ module.exports.postAuction = function (req, res) {
 }
 
 module.exports.getAuction = function (req, res) {
-  // API endpoint = /auctions/:id
-
-  // authenticate with jwt
-  var id = req.params;
-  // send auction data associated with id value
-  res.send(200).send('sending auction data');
+  console.log(req.params);
+  Auction.find({auctionId: req.params.id}, function (err, auction) {
+    if(err) {
+      console.log(err);
+    }
+    res.json(auction);
+  })
 }
 
 module.exports.getAuctions = function (req, res) {

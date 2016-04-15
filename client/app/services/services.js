@@ -122,7 +122,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
   var getAuction = function (id) {
     return $http.get('/auctions/' + id)
     .then(function (auction) {
-      auction = auction.data;
+      console.log(auction);
       return auction;
     });
   };

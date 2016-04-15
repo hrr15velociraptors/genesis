@@ -5,21 +5,20 @@ angular.module('genesis', [
   'genesis.chat',
   'genesis.services',
   'genesis.video',
-  'genesis.auction',
   'ui.router',
   'pubnub.angular.service'
 ])
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-  // $urlRouterProvider.otherwise('/signin');
+  $urlRouterProvider.otherwise('/signin');
 
   $stateProvider
-  .state('auctions', {
+  .state('auction', {
       authenticate: true,
-      url: '/auctions/:id',
+      url: '/auction/:id',
+      controller: 'AuctionController',
       views: {
         '' : {
-          templateUrl: 'app/auction/auction.html',
-          controller: 'AuctionController'
+          templateUrl: 'app/auction/auction.html'
         },
         'chat@auction': {
           templateUrl: 'app/auction/chat/chat.html',
@@ -48,7 +47,8 @@ angular.module('genesis', [
           controller: 'ProfileController'
     })
 
-  $httpProvider.interceptors.push('AttachTokens');0
+
+  $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
