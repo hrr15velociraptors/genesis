@@ -2,4 +2,17 @@
 <div>Welcome to an Auction Video / Chat Page</div>
 <div ui-view="video"></div>
 <div ui-view="chat"></div>
+
+--------
+<br><br>
+
+  <button class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
+  Current Bids: {{ auctionData.bids }} | Sprice: ${{ auctionData.sprice }} | Rprice: ${{ auctionData.rprice }}
+  <div>
+    {{ auctionData }}
+    <h1> {{ auctionData.title }} </h1>
+    <p> {{ auctionData.description }} </p>
+
+    <p> {{ auctionData.duration }} </p>
+  </div>
 </body>

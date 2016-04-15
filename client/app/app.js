@@ -5,6 +5,7 @@ angular.module('genesis', [
   'genesis.chat',
   'genesis.services',
   'genesis.video',
+  'genesis.auction',
   'ui.router',
   'pubnub.angular.service'
 ])
@@ -17,7 +18,8 @@ angular.module('genesis', [
       url: '/auction',
       views: {
         '' : {
-          templateUrl: 'app/auction/auction.html'
+          templateUrl: 'app/auction/auction.html',
+          controller: 'AuctionController'
         },
         'chat@auction': {
           templateUrl: 'app/auction/chat/chat.html',
