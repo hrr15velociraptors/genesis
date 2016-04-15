@@ -12,7 +12,7 @@ angular.module('genesis.profile',  [])
   $scope.createAuction = function () {
     Auction.createAuction($scope.auction).then(function (data) {
       $('.modal').modal('hide'); //  hide bootstrap modal (the gray background)
-      $state.go('auctions'); // change state to auctions/id
+      $state.go('auction'); // change state to auctions/id
     });
   }
 });
