@@ -109,7 +109,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // retrieve data on all current auctions
   var getAuctions = function () {
-    return $http.get('/auctions')
+    return $http.get('api/auctions')
       .then(function (auctions) {
         auctions = auctions.data;
         return auctions;

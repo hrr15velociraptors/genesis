@@ -1,11 +1,10 @@
-<body>
+<div class="auctionBody">
 <div>Welcome to an Auction Video / Chat Page</div>
 <div ui-view="video"></div>
 <div ui-view="chat"></div>
 
 --------
 <br><br>
-<button class="btn btn-primary" ng-click="getAuction()">GET AUCTION DATA</button>
 
   <button class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
   Current Bids: {{ auctionData.bids }} | Starting Price: ${{ auctionData.sprice }} | Reserve Price: ${{ auctionData.rprice }}
@@ -17,4 +16,4 @@
 
     <p> {{ auctionData.duration }} </p>
   </div>
-</body>
+</div>

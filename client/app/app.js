@@ -5,6 +5,7 @@ angular.module('genesis', [
   'genesis.chat',
   'genesis.services',
   'genesis.video',
+  'genesis.home',
   'ui.router',
   'pubnub.angular.service'
 ])
@@ -12,12 +13,17 @@ angular.module('genesis', [
   $urlRouterProvider.otherwise('/signin');
 
   $stateProvider
+  .state('home', {
+    url: '/auctions',
+    templateUrl: 'app/auction/home.html',
+    controller: 'HomeController'
+  })
   .state('auction', {
       authenticate: true,
-      url: '/auction/:id',
+      url: '/auctions/:id',
       views: {
         '' : {
-          templateUrl: 'app/auction/auction.html',
+          templateUrl: 'app/auction/auctions/auction.html',
           controller: 'AuctionController'
         },
         'chat@auction': {
