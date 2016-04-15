@@ -12,9 +12,11 @@ module.exports = function(app, passport) {
     .post(passport.authenticate('jwt'), handler.postBid)
     .delete(passport.authenticate('jwt'), handler.deleteBid);
 
-  app.route('/api/auction')
-    .get(passport.authenticate('jwt'), handler.getAuction)
+  // app.route('/api/auctions/:id')
+  //   .get(passport.authenticate('jwt'), handler.getAuction)
+  //   .post(passport.authenticate('jwt'), handler.postAuction)
+
+  app.route('/api/auctions')
+    .get(passport.authenticate('jwt'), handler.getAuctions)
     .post(passport.authenticate('jwt'), handler.postAuction)
-    .delete(passport.authenticate('jwt'), handler.deleteAuction)
-    .put(passport.authenticate('jwt'), handler.modifyAuction);
 }

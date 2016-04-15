@@ -15,14 +15,14 @@ module.exports.deleteBid = function (req, res) {
 }
 
 module.exports.postAuction = function (req, res) {
-  new Auction(req.body).save(function () {
-    res.status(200).send('ok');
+  new Auction(req.body).save(function (err, auction) {
+    res.json(auction);
   });
 }
 
 module.exports.getAuction = function (req, res) {
   // API endpoint = /auctions/:id
-  
+
   // authenticate with jwt
   var id = req.params;
   // send auction data associated with id value
@@ -30,7 +30,9 @@ module.exports.getAuction = function (req, res) {
 }
 
 module.exports.getAuctions = function (req, res) {
-  
+  Auction.find({}, function (err, auctions) {
+    res.json(auctions);
+  })
 };
 
 module.exports.modifyAuction = function (req, res) {
