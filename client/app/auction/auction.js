@@ -1,7 +1,7 @@
 angular.module('genesis.auction', [])
 
 .controller('AuctionController', function($scope, Auction, $location) {
-  var id = $location.path().split("/")[1]; //domain.com/auctions/1
+  var id = $location.path().split("/")[1]; //domain.com/auctions/155125125215
   var testdata = {
   "user": 'use that owns it',
   "bids": 1,
