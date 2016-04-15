@@ -40,10 +40,9 @@ angular.module('genesis.services', ['pubnub.angular.service'])
   var streamName;
 
   // public broadcasting CHANGE HARDCODE streamname to param
-  var stream = function(keys) {
-    streamName = 'auction-name' || Math.floor(Math.random()*100)+''; // Random stream if not provided
+  var stream = function(keys, id) {
     var phone = window.phone = PHONE({
-        number        : streamName, // listen on username else random
+        number        : id, // listen on ID of auction URL
         publish_key: keys[0], // Your Pub Key
         subscribe_key: keys[1], // Your Sub Key
         oneway        : true, // One-Way streaming enabled
@@ -63,9 +62,8 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     return false;  // So form does not submit
   };
 
-  // watching CHANGE HARDCODE num to param
-  var watch = function(keys){
-    var num = 'auction-name';  // Stream to join
+  //ID is auction URL channel
+  var watch = function(keys, id){
     var phone = window.phone = PHONE({
         number        : "Viewer" + Math.floor(Math.random()*100), // Random name
         publish_key: keys[0],
@@ -76,8 +74,8 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     });
     var ctrl = window.ctrl = CONTROLLER(phone, true);
     ctrl.ready(function(){
-      ctrl.isStreaming(num, function(isOn){
-        if (isOn) ctrl.joinStream(num);
+      ctrl.isStreaming(id, function(isOn){
+        if (isOn) ctrl.joinStream(id);
         else alert("User is not streaming!");
       });
     });
@@ -89,10 +87,10 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     return false;  // Prevent form from submitting
   };
 
-  var end = function (keys) {
+  var end = function (keys, id) {
     //turns video and audio off when ended
-    ctrl.toggleVideo('auction-name');
-    ctrl.toggleAudio('auction-name');
+    ctrl.toggleVideo(id);
+    ctrl.toggleAudio(id);
     //disconnects users
     ctrl.hangup();
   };
