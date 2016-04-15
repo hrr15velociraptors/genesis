@@ -22,10 +22,13 @@ angular.module('genesis.auction', [])
 
   $scope.getAuction = function() {
     console.log('Calling getAuction!!!!');
+    console.log(id);
     Auction.getAuction(id)
       .then(function (data) {
         console.log(data);
         $scope.auctionData = data;
       })
   };
+
+  $scope.getAuction();
 });

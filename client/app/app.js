@@ -1,5 +1,5 @@
 angular.module('genesis', [
-  // 'genesis.auction',
+  'genesis.auction',
   'genesis.profile',
   'genesis.auth',
   'genesis.chat',
@@ -15,10 +15,10 @@ angular.module('genesis', [
   .state('auction', {
       authenticate: true,
       url: '/auction/:id',
-      controller: 'AuctionController',
       views: {
         '' : {
-          templateUrl: 'app/auction/auction.html'
+          templateUrl: 'app/auction/auction.html',
+          controller: 'AuctionController'
         },
         'chat@auction': {
           templateUrl: 'app/auction/chat/chat.html',

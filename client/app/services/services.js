@@ -120,10 +120,9 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // retrieve data from single auction
   var getAuction = function (id) {
-    return $http.get('/auctions/' + id)
+    return $http.get('api/auctions/' + id)
     .then(function (auction) {
-      console.log(auction);
-      return auction;
+      return auction.data[0];
     });
   };
 
