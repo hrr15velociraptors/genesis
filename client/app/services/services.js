@@ -105,10 +105,10 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
 })
 .factory('Auction', function ($http) {
-  
+
   var auctions;
   var auction;
-  
+
   // retrieve data on all current auctions
   var getAuctions = function () {
     return $http.get('/auctions')
@@ -117,7 +117,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         return auctions;
       });
   };
-  
+
   // retrieve data from single auction
   var getAuction = function (id) {
     return $http.get('/auctions/' + id)
@@ -126,9 +126,21 @@ angular.module('genesis.services', ['pubnub.angular.service'])
       return auction;
     });
   };
-  
+
+  var createAuction = function (auction) {
+      return $http({
+        method: 'POST',
+        url: '/api/auctions',
+        data: auction
+      })
+      .then(function (res) {
+        return res.data;
+      });
+    };
+
   return {
     getAuctions: getAuctions,
-    getAuction: getAuction
+    getAuction: getAuction,
+    createAuction: createAuction
   };
 });

@@ -6,18 +6,13 @@ angular.module('genesis.profile',  [])
     $scope.user = userData;
   });
 })
-.controller('CreateAucController', function($scope, $http) {
+.controller('CreateAucController', function ($scope, $http, $state, Auction) {
   $scope.auction = {};
 
   $scope.createAuction = function () {
-    console.log($scope.auction);
-      return $http({
-        method: 'POST',
-        url: '/api/users/auctions',
-        data: $scope.auction
-      })
-      .then(function (res) {
-        console.log('Auction saved in DB');
-      });
-    };
+    Auction.createAuction($scope.auction).then(function (data) {
+      $('.modal').modal('hide'); //  hide bootstrap modal (the gray background)
+      $state.go('auctions'); // change state to auctions/id
+    });
+  }
 });

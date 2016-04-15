@@ -10,12 +10,12 @@ angular.module('genesis', [
   'pubnub.angular.service'
 ])
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/signin');
+  // $urlRouterProvider.otherwise('/signin');
 
   $stateProvider
-  .state('auction', {
+  .state('auctions', {
       authenticate: true,
-      url: '/auction',
+      url: '/auctions/:id',
       views: {
         '' : {
           templateUrl: 'app/auction/auction.html',
