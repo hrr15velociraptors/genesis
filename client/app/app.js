@@ -11,7 +11,8 @@ angular.module('genesis', [
   'pubnub.angular.service'
 ])
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/signin');
+ $urlRouterProvider.when('', '/auctions');
+ $urlRouterProvider.otherwise('');
 
   $stateProvider
   .state('home', {
