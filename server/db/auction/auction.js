@@ -11,7 +11,8 @@ var auctionSchema = mongoose.Schema({
   duration: {type: String, required: true},
   sprice: {type: Number, required: true},
   rprice: {type: Number, required: true},
-  auctionId: {type: Number, default: 0}
+  auctionId: {type: Number, default: 0},
+  owner: {type: String, require: true}
 });
 
 auctionSchema.plugin(timestamps);

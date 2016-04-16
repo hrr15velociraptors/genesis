@@ -1,7 +1,7 @@
 angular.module('genesis.services', ['pubnub.angular.service'])
 .factory('User', function ($http, $window) {
 
-  var username = $window.localStorage.getItem('com.genesis').username;
+  var username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
   var getUserData = function () {
     return $http({
       method: 'GET',
