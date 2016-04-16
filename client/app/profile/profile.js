@@ -1,11 +1,13 @@
 angular.module('genesis.profile',  [])
 .controller('ProfileController', function ($scope, User) {
   $scope.user = {};
-
   User.getUserData().then(function (userData) {
+    console.log(userData);
     $scope.user = userData;
   });
 })
+
+
 .controller('CreateAucController', function ($scope, $http, $state, Auction) {
   $scope.auction = {};
 

@@ -13,7 +13,6 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
 
   // pull user from browser local storage
   var user = JSON.parse($window.localStorage.getItem('com.genesis')).username;
-  console.log(user);
 
   var pub_sub;
 
