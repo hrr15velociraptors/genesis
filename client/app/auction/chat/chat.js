@@ -1,7 +1,7 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
 .controller('ChatController', function ($window, $scope, $location, Auth, Pubnub, Keys, Auction) {
-
+  $scope.username = $window.localStorage.getItem('com.genesis').username;
   //set URL ID as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
 
@@ -70,5 +70,9 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
               $scope.messages.push(m)
           });
       });
+
+      $scope.avatarUrl = function(uuid){
+          return 'http://robohash.org/'+uuid+'?set=set2&bgset=bg2&size=70x70';
+      };
   });
 });

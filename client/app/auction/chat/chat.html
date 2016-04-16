@@ -2,12 +2,13 @@
   <body ng-controller="ChatController">
 
     <!-- View messages -->
-    <ul class="collection" style="overflow: scroll; height: 95%;">
-      <li class="clearfix collection-body" ng-repeat="message in messages">
-        <span class="message-date">[{{ message.date }}]</span>
-        <span class="title">{{ message.sender_uuid }}</span>
-        : {{ message.content }}
-      <br></li>
+    <ul>
+     <li ng-repeat="message in messages">
+       <img src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
+       <span class="title">{{username}} : {{ message.content }} </span>
+       <p>{{ message.date | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+     </li>
+</ul>
 
       <!-- Post messages -->
       <div>
