@@ -18,7 +18,6 @@ angular.module('genesis.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (data) {
-        console.log('BOOOOOOO');
         $window.localStorage.setItem('com.genesis', JSON.stringify(data));
         $location.path('/auctions');
       })
