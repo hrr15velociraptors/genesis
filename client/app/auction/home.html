@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div>
+  <h1> Welcome to Genesis Auctions </h1>
+    <div class="nav">
+      <div class="container">
+         <ul class="pull-right">
+          <li><a href="/#/profile">Profile</a></li>
+          <li><a href="/#/logout">Log Out</a></li>
+        </ul>
+      </div>
+  <div class="row">
+    <div class="col-md-3" ng-repeat="auction in allAuctions">
+      <div class="thumbnail" ng-click="navToAuction(auction.auctionId)">
+        <p>{{ auction.title }}</p>
+        <p>{{ auction.sprice}}</p>
+        <p>{{ auction.rprice }}</p>
+        <p>{{ auction.duration}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
