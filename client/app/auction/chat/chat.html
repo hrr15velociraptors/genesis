@@ -5,8 +5,8 @@
     <ul>
      <li ng-repeat="message in messages">
        <img src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
-       <span class="title">{{username}} : {{ message.content }} </span>
-       <p>{{ message.date | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+       <span class="title"> {{username}}: {{ message.content }}</span>
+       <p>{{ message.date | date:"MM/dd/yyyy 'at' h:mma"}}</br></p>
      </li>
 </ul>
 
