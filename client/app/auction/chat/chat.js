@@ -5,13 +5,6 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
   //set URL ID as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
 
-  // for logging out and deleting local client user token/session
-  $scope.signout = function() {
-    //Give message to user for succesfull sign out
-    console.log('You have succesfully signed out');
-    Auth.signout();
-  };
-
   //disconnect when leaving page
   $scope.$on('$locationChangeStart', function(event) {
     // SOCKET.IO => we need to remove user from users array on backend

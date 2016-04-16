@@ -19,6 +19,8 @@
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.3",
-    "moment": "^2.12.0"
+    "moment": "^2.12.0",
+    "pubnub": "^3.14.5",
+    "pubnub-angular": "^3.1.1"
   }
 }
