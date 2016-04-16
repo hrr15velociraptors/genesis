@@ -1,14 +1,30 @@
 
 <div class="container">
-
-  <form class="form-signin" ng-submit='signin()'>
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus ng-model='user.username'>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model='user.password'>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
-  </form>
-
+  <h1>Sign in</h1>
+  <hr>
+  <div class='row'>
+    <div class='col-md-8'>
+      <form class="form-horizontal" role="form" ng-submit='signin()'>
+        <div class='form-group'>
+          <label for="inputUsername" class="col-lg-3 control-label">Username</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" placeholder="Username" required autofocus ng-model='user.username'>
+          </div>
+        </div>
+        <div class='form-group'>
+          <label class="col-lg-3 control-label">Password</label>
+          <div class="col-lg-8">
+            <input type="password" class="form-control" placeholder="Password" required ng-model='user.password'>
+          </div>
+        </div>
+        <div class='form-group'>
+          <label class="col-md-3 control-label"></label>
+          <div class='col-md-8'>
+            <button class="btn btn-primary" type="submit">Signin</button>
+            <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
