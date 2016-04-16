@@ -17,7 +17,6 @@ module.exports.deleteBid = function (req, res) {
 module.exports.postAuction = function (req, res) {
   var auction = req.body;
   auction.user = req.user._id;
-  console.log(auction);
   new Auction(auction).save(function (err, newAuction) {
     res.json(newAuction);
   });
@@ -34,6 +33,9 @@ module.exports.getAuction = function (req, res) {
 
 module.exports.getAuctions = function (req, res) {
   Auction.find({}, function (err, auctions) {
+    if(err) {
+      console.log(err);
+    }
     res.json(auctions);
   })
 };
