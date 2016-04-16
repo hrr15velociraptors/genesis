@@ -1,3 +1,4 @@
+<div ui-view="header"></div>
 <div class="container">
     <h1>Sign up</h1>
   	<hr>
@@ -8,19 +9,19 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" >
+              <input class="form-control" type="text" placeholder="First Name" required autofocus ng-model='user.firstName' >
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text">
+              <input class="form-control" type="text" placeholder="Last Name" required autofocus ng-model='user.lastName'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text">
+              <input class="form-control" type="text" placeholder="Email" required autofocus ng-model='user.email'>
             </div>
           </div>
           <div class="form-group">
@@ -43,25 +44,25 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
             <div class="col-md-8">
-              <input class="form-control" type="text">
+              <input class="form-control" type="text" placeholder="Username" required autofocus ng-model='user.username'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password">
+              <input class="form-control" type="password" placeholder="Password" required autofocus ng-model='user.password'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Confirm password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password">
+              <input class="form-control" type="password" placeholder="Confirm Password" required autofocus ng-model='user.password'>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Signup" ng-submit='signup()'>
+              <input type="button" class="btn btn-primary" value="Signup" ng-click='signup()'>
               <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
             </div>
           </div>
@@ -70,5 +71,3 @@
   </div>
 </div>
 <hr>
-
-
