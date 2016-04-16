@@ -1,9 +1,12 @@
 angular.module('genesis.auction', [])
 
-.controller('AuctionController', function($scope, Auction, $location) {
+.controller('AuctionController', function($scope, $window, Auction, $location) {
 
   //Grabbing ID from URL
-  var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
+  var id = $location.path().split("/")[2]; //domain.com/auctions/15
+
+  $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
+  $scope.auctionId = id;
 
   $scope.bid = function () {
     console.log('bid increased');
@@ -13,7 +16,7 @@ angular.module('genesis.auction', [])
 
   //grab auction from API using URL
   $scope.getAuction = function() {
-    console.log('Calling getAuction!!!!');
+    console.log('Calling getAuction!');
     console.log(id);
     Auction.getAuction(id)
       .then(function (data) {

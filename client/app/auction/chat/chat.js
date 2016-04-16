@@ -1,7 +1,8 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
 .controller('ChatController', function ($window, $scope, $location, Auth, Pubnub, Keys, Auction) {
-  $scope.username = $window.localStorage.getItem('com.genesis').username;
+  $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
+
   //set URL ID as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
 
