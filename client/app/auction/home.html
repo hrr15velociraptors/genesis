@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<div>
-  <h1> Welcome to Genesis Auctions </h1>
-    <div class="nav">
-      <div class="container">
-         <ul class="pull-right">
-          <li><a href="/#/profile">Profile</a></li>
-          <li><a href="/#/logout">Log Out</a></li>
-        </ul>
-      </div>
-  <div class="row">
-    <div class="col-md-3" ng-repeat="auction in allAuctions">
-      <div class="thumbnail" ng-click="navToAuction(auction.auctionId)">
+<div ui-view="header"></div>
+<div classs="containter">
+  <div class="row home" >
+    <div class="col-lg-12">
+        <h4>Live Auctions</h4>
+        <hr>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="auction in allAuctions">
+      <div class="thumbnail active aucthumb" ng-click="navToAuction(auction.auctionId)">
         <p>{{ auction.title }}</p>
         <p>{{ auction.sprice}}</p>
         <p>{{ auction.rprice }}</p>
@@ -18,5 +14,4 @@
       </div>
     </div>
   </div>
-
 </div>

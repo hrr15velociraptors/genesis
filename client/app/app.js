@@ -6,6 +6,7 @@ angular.module('genesis', [
   'genesis.services',
   'genesis.video',
   'genesis.home',
+  'genesis.header',
   'ui.router',
   'pubnub.angular.service'
 ])
@@ -14,9 +15,18 @@ angular.module('genesis', [
 
   $stateProvider
   .state('home', {
+    authenticate: true,
     url: '/auctions',
-    templateUrl: 'app/auction/home.html',
-    controller: 'HomeController'
+    views: {
+      '': {
+        templateUrl: 'app/auction/home.html',
+        controller: 'HomeController'
+        },
+      'header@home': {
+        templateUrl: 'app/auction/header/header.html',
+        controller: 'HeaderController'
+      }
+    }
   })
   .state('auction', {
       authenticate: true,
@@ -33,6 +43,10 @@ angular.module('genesis', [
         'video@auction': {
           templateUrl: 'app/auction/video/video.html',
           controller: 'VideoController'
+        },
+        'header@auction': {
+          templateUrl: 'app/auction/header/header.html',
+          controller: 'HeaderController'
         }
       }
     })
