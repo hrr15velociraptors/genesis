@@ -19,7 +19,7 @@ angular.module('genesis.profile',  [])
   $scope.createAuction = function () {
     Auction.createAuction($scope.auction).then(function (data) {
       $('.modal').modal('hide'); //  hide bootstrap modal (the gray background)
-      $window.location.href= '#/auctions/' + data.auctionId; // change state to auctions/id
+      $window.location.href= '#/auctions/' + data.auctionId; // change location to auctions/id
     });
   }
 });
