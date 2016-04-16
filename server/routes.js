@@ -6,7 +6,7 @@ module.exports = function(app, passport) {
 
   app.post('/api/users/signin', passport.authenticate('signin'), handler.signin);
 
-  app.get('/api/users', passport.authenticate('jwt'), handler.getUserInfo);
+  app.get('/api/users', passport.authenticate('jwt'), handler.getProfileInfo);
 
   app.route('/api/bid')
     .post(passport.authenticate('jwt'), handler.postBid)
