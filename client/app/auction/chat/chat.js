@@ -1,16 +1,9 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
 .controller('ChatController', function ($window, $scope, $location, Auth, Pubnub, Keys, Auction) {
-
+  $scope.username = $window.localStorage.getItem('com.genesis').username;
   //set URL ID as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
-
-  // for logging out and deleting local client user token/session
-  $scope.signout = function() {
-    //Give message to user for succesfull sign out
-    console.log('You have succesfully signed out');
-    Auth.signout();
-  };
 
   //disconnect when leaving page
   $scope.$on('$locationChangeStart', function(event) {
@@ -77,5 +70,9 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
               $scope.messages.push(m)
           });
       });
+
+      $scope.avatarUrl = function(uuid){
+          return 'http://robohash.org/'+uuid+'?set=set2&bgset=bg2&size=70x70';
+      };
   });
 });

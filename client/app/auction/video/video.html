@@ -3,12 +3,11 @@
   <!-- PubNub Video Embed -->
   <div id="vid-box"><!-- Stream goes here --></div>
   <form name="streamForm" id="stream" ng-submit="stream()">
-      <button>Test Stream</button>
-      <div id="stream-info">Audience: <span id="here-now">0</span></div>
+    <div id="stream-info">Audience: <span id="here-now">0</span></div>
+    <button>Start Auction</button>
   </form>
 
-  <button ng-click="end()">End Stream</button>
   <form name="watchForm" id="watch" ng-submit="watch()">
-    <button>Watch Test Stream</button>
+    <button ng-click="end()">End Auction</button>
   </form>
 </div>

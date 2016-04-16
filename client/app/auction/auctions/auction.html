@@ -1,20 +1,12 @@
-<div class="auctionBody">
-  <div ui-view="header"></div>
-  <div>Welcome to an Auction Video / Chat Page</div>
-    <div ui-view="video"></div>
-    <div ui-view="chat"></div>
+<div ui-view="header"></div>
+<h1>Title: {{ auctionData.title }} </h1>
+<div ui-view="video"></div>
+  <div>
+    <p>Description: {{ auctionData.description }} </p>
+    <p>Duration: {{ auctionData.duration }} </p>
+  </div>
 
---------
-    <br><br>
-
-    <button class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
-    Current Bids: {{ auctionData.bids }} | Starting Price: ${{ auctionData.sprice }} | Reserve Price: ${{ auctionData.rprice }}
-    <br><br>
-    <div>
-      {{ auctionData }}
-      <h1> {{ auctionData.title }} </h1>
-      <p> {{ auctionData.description }} </p>
-
-      <p> {{ auctionData.duration }} </p>
-    </div>
+  <button class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
+  Current Bids: {{ auctionData.bids }} | Starting Price: ${{ auctionData.sprice }} | Reserve Price: ${{ auctionData.rprice }}
 </div>
+<div ui-view="chat"></div>
