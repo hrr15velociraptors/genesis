@@ -11,3 +11,7 @@ var bidSchema = mongoose.Schema({
 bidSchema.plugin(timestamps);
 bidSchema.plugin(relationship, {relationshipPathName: 'user'});
 bidSchema.plugin(relationship, {relationshipPathName: 'auction'});
+
+var Bid = mongoose.model('Bid', bidSchema);
+
+module.exports = Bid;

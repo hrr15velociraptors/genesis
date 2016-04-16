@@ -11,7 +11,8 @@ angular.module('genesis', [
   'pubnub.angular.service'
 ])
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/signin');
+ $urlRouterProvider.when('', '/auctions');
+ $urlRouterProvider.otherwise('');
 
   $stateProvider
   .state('home', {
@@ -52,19 +53,43 @@ angular.module('genesis', [
     })
   .state('signin', {
         url: '/signin',
-        templateUrl: 'app/auth/signin.html',
-        controller: 'AuthController'
+        views: {
+          '' : {
+            templateUrl: 'app/auth/signin.html',
+            controller: 'AuthController'
+          },
+          'header@signin': {
+            templateUrl: 'app/auction/header/header.html',
+            controller: 'HeaderController'
+          }
+        }
     })
   .state('signup', {
           url: '/signup',
-          templateUrl: 'app/auth/signup.html',
-          controller: 'AuthController'
+          views: {
+            '' : {
+              templateUrl: 'app/auth/signup.html',
+              controller: 'AuthController'
+            },
+            'header@signup': {
+              templateUrl: 'app/auction/header/header.html',
+              controller: 'HeaderController'
+            }
+          }
     })
   .state('profile', {
           authenticate: true,
           url: '/profile',
-          templateUrl: 'app/profile/profile.html',
-          controller: 'ProfileController'
+          views: {
+            '' : {
+              templateUrl: 'app/profile/profile.html',
+              controller: 'ProfileController'
+            },
+            'header@profile': {
+              templateUrl: 'app/auction/header/header.html',
+              controller: 'HeaderController'
+            }
+          }
     })
 
 

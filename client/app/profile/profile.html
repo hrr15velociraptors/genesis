@@ -1,106 +1,67 @@
-<div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Profile Info</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class=" col-md-9 col-lg-9 ">
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Name:</td>
-                        <td>{{user.firstName}}  {{user.lastName}}</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td>{{user.email}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <a href="#" class="btn btn-primary">My Auctions</a>
-                  <a href="#" class="btn btn-primary">My Bids</a>
+<div ui-view="header"></div>
+            <hr>
+            <div class="container bootstrap snippet">
+                <div class="row">
+              		<div class="col-sm-10"><h1>{{user.username}}</h1></div>
                 </div>
-              </div>
-            </div>
-             <div class="panel-footer">
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                    <span class="pull-right">
-                        <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                    </span>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                <div class="row">
+              		<div class="col-sm-3"><!--left col-->
 
-    <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <h3 class="panel-title">My Actions</h3>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class=" col-md-9 col-lg-9 ">
-                      <table class="table table-user-information">
-                        <tbody>
-                          <tr>
-                            <td>Auction Name:</td>
-                            <td>Auction Stuff</td>
-                          </tr>
-                          <tr>
-                            <td>Auction Status</td>
-                            <td>Auction Stuff</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <ul class="list-group">
+                        <li class="list-group-item text-muted">Profile Settings</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Username: </strong></span>{{user.username}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Full Name: </strong></span>{{user.firstName}}  {{user.lastName}}</li>
+                  <li class="list-group-item text-right"><span class="pull-left"><strong>Email: </strong></span>{{user.email}}</li>
 
-                      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
-                        Create New Auction
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                      </ul>
 
-        <div class="container">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-                  <div class="panel panel-info">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Recent Bids</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div class="row">
-                        <div class=" col-md-9 col-lg-9 ">
-                          <table class="table table-user-information">
-                            <tbody>
+                    </div><!--/col-3-->
+                	<div class="col-sm-9">
+
+                      <ul class="nav nav-tabs" id="myTab">
+                        <li class="active"><a href="#myauctions" data-toggle="tab">MyAuctions</a></li>
+                        <li><a href="#mybids" data-toggle="tab">MyBids</a></li>
+                      </ul>
+
+
+                          <table class="table table-hover">
+                            <thead>
                               <tr>
-                                <td>Name:</td>
-                                <td>{{user.firstName}}  {{user.lastName}}</td>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Duration</th>
                               </tr>
-                              <tr>
-                                <td>Email</td>
-                                <td>{{user.email}}</td>
+                            </thead>
+                            <tbody id="items">
+                              <tr ng-repeat="auction in user.auctions" ng-click="navToAuction(auction.auctionId)" >
+                                <td>{{ auction.auctionId }}</td>
+                                <td>{{ auction.title }}</td>
+                                <td>{{ auction.duration}}</td>
                               </tr>
                             </tbody>
                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="myauctions">
+                          <div class="table-responsive">
+
+
+                            <hr>
+
+                          </div><!--/table-resp-->
+
+                          <hr>
+
+                         </div><!--/tab-pane-->
+                          </div><!--/tab-pane-->
+                      </div><!--/tab-content-->
+
+                    </div><!--/col-9-->
+                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
+                      Create New Auction
+                    </button>
+                </div><!--/row-->
 
 
             <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"

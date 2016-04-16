@@ -15,13 +15,15 @@ module.exports.deleteBid = function (req, res) {
 }
 
 module.exports.postAuction = function (req, res) {
-  new Auction(req.body).save(function (err, auction) {
-    res.json(auction);
+  var auction = req.body;
+  auction.user = req.user._id;
+  console.log(auction);
+  new Auction(auction).save(function (err, newAuction) {
+    res.json(newAuction);
   });
 }
 
 module.exports.getAuction = function (req, res) {
-  console.log(req.params);
   Auction.find({auctionId: req.params.id}, function (err, auction) {
     if(err) {
       console.log(err);
@@ -45,8 +47,31 @@ module.exports.deleteAuction = function (req, res) {
   res.status(200).send('ok');
 }
 
-module.exports.getUserInfo = function (req, res) {
-  res.json(req.user);
+module.exports.getProfileInfo = function (req, res) {
+  var auctionsIDS = req.user.auctions;
+  var profileData  = {
+    username: req.user.username,
+    email: req.user.email,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName
+  };
+  Auction.find({
+    '_id': { $in: req.user.auctions }
+  }, function(err, auctions) {
+      if(err) {
+        console.log(err);
+      }
+      profileData.auctions = auctions;
+      Bid.find({
+     '_id': { $in: req.user.bids }
+     }, function(err, bids){
+         if(err) {
+           console.log(err);
+         }
+         profileData.bids = bids;
+         res.json(profileData);
+       });
+  });
 }
 
 module.exports.signin = function (req, res) {
