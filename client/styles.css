@@ -2,9 +2,19 @@ video {
     width: 100%;
 }
 div#vid-box {
-    max-width: 600px;
-    min-width: 300px;
+    max-height: 600px;
+    /*min-width: 300px;*/
+    z-index: 0;
+    opacity: .8;
 }
+
+#auction {
+  z-index: 1;
+}
+/*video {
+  border-radius: 400px;
+  border: rgb(51,122,183) solid 5px;
+}*/
 
 img.avatar
 {
