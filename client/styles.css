@@ -1,4 +1,5 @@
 video {
+    z-index: 0;
     width: 100%;
 }
 div#vid-box {
@@ -9,7 +10,20 @@ div#vid-box {
 }
 
 #auction {
-  z-index: 1;
+  float: left;
+  z-index: 4;
+}
+
+#stream-info {
+  z-index: 100;
+}
+
+#viewer {
+  z-index: 100;
+}
+
+#owner {
+  z-index: 100;
 }
 /*video {
   border-radius: 400px;

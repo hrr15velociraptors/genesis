@@ -16,13 +16,9 @@ angular.module('genesis.auction', [])
 
   //grab auction from API using URL
   $scope.getAuction = function() {
-    console.log('Calling getAuction!');
-    console.log(id);
     Auction.getAuction(id)
       .then(function (data) {
-        console.log(data);
         $scope.auctionData = data;
-        //show auction DNE error
         if (!data)  {
           $scope.DNE();
         }

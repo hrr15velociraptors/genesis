@@ -35,7 +35,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // PubNub Video Functionality
   var video_out  = document.getElementById("vid-box");
-  var embed_code = document.getElementById("embed-code");
   var here_now   = document.getElementById('here-now');
   var streamName;
 
@@ -52,9 +51,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     });
     var ctrl = window.ctrl = CONTROLLER(phone);
     ctrl.ready(function(){
-      // form.streamname.style.background="#55ff5b";
-      // ctrl.stream_submit.hidden="true";
-      console.log(streamName);
       ctrl.addLocalStream(video_out);
       ctrl.stream();  // Begin streaming video
     });
