@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 video {
     z-index: 0;
     width: 100%;
@@ -9,10 +13,10 @@ div#vid-box {
     opacity: .8;
 }
 
-#auction {
+/*#auction {
   float: left;
   z-index: 4;
-}
+}*/
 
 #stream-info {
   z-index: 100;
@@ -36,7 +40,7 @@ img.avatar
   width: 8%;
 }
 
-.collection
+.chat
 {
     list-style: none;
     margin: 0;
@@ -47,7 +51,7 @@ img.avatar
     top: 80px;
 }
 
-.chat
+.message-box
 {
     margin-bottom: 20px;
     font-size: 20px;
@@ -59,17 +63,22 @@ img.avatar
     height: 50%;
 }
 
-ul.collection
-{
-  width: 40%;
-  overflow: scroll;
-  height: 50%;
-  overflow-x: hidden;
+span {
+  
 }
 
-.collection li
+ul.chat
+{
+  width: 150%;
+  overflow: scroll;
+  height: 50%;
+  overflow-x: bottom;
+}
+
+.chat li
 {
     margin-bottom: 10px;
+    width: 1000px;
     padding-bottom: 5px;
     border-bottom: 1px dotted #B3A9A9;
 }
