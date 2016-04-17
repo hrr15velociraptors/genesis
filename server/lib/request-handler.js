@@ -5,11 +5,10 @@ var Auction = db.Auction;
 var User = db.User;
 
 module.exports.postBid = function (req, res) {
-  console.log(req.body);
   var bid = req.body;
   bid.user = req.user._id;
   new Bid(req.body).save(function () {
-    Auction.findOneAndUpdate({_id: bid.auction}, {$set: {cprice: bid.amount}}, function (err, auction) {
+    Auction.findOneAndUpdate({_id: bid.auction}, {$set: {cprice: bid.amount}}, {new: true}, function (err, auction) {
       if (err) {
         res.status(404).send('err');
       }
@@ -25,7 +24,10 @@ module.exports.deleteBid = function (req, res) {
 module.exports.postAuction = function (req, res) {
   var auction = req.body;
   auction.user = req.user._id;
-  new Auction(auction).save(function (newAuction) {
+  new Auction(auction).save(function (err, newAuction) {
+    if (err) {
+      console.log(err);
+    }
     res.json(newAuction);
   });
 }
@@ -33,13 +35,14 @@ module.exports.postAuction = function (req, res) {
 module.exports.getAuction = function (req, res) {
   Auction.find({auctionId: req.params.id}, function (err, auction) {
     if(err) {
-      console.log('err');
+      console.log(err);
     }
     res.json(auction);
   })
 }
 
 module.exports.getAuctions = function (req, res) {
+  // return all auctions in database
   Auction.find({}, function (err, auctions) {
     if(err) {
       console.log(err);
@@ -49,11 +52,13 @@ module.exports.getAuctions = function (req, res) {
 };
 
 module.exports.modifyAuction = function (req, res) {
+  // not done yet
   res.status(200).send('ok');
 
 }
 
 module.exports.deleteAuction = function (req, res) {
+  // not done yet
   res.status(200).send('ok');
 }
 

@@ -8,7 +8,7 @@
       <p><strong>Description:</strong> {{ auctionData.description }} </p>
       <p><strong>Duration:</strong> {{ auctionData.duration }} </p>
       <button id="bid-btn" class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
-      <p style="margin-top: 15px;"><strong>Current Bids:</strong> {{ auctionData.bids }}
+      <p style="margin-top: 15px;"><strong>Current Bids:</strong> {{ auctionData.bids.length }}
       <p><strong>Starting Price:</strong> ${{ auctionData.sprice }} | <strong>Current Price:</strong> ${{ auctionData.cprice }}</p>
     </div>
     <div class="chat col-md-4" ui-view="chat"></div>
