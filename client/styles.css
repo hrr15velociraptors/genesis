@@ -20,27 +20,6 @@ video {
   z-index: 100;
 }
 
-/*#auction {
-  float: left;
-  z-index: 4;
-}*/
-
-#stream-info {
-  z-index: 100;
-}
-
-#viewer {
-  z-index: 100;
-}
-
-#owner {
-  z-index: 100;
-}
-/*video {
-  border-radius: 400px;
-  border: rgb(51,122,183) solid 5px;
-}*/
-
 img.avatar
 {
   height: 8%;
