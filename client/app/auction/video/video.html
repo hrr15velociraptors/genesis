@@ -5,7 +5,6 @@
   
   <div ng-if="owner">
     <form name="streamForm" id="stream" ng-submit="stream()">
-      <div id="stream-info">Audience: <span id="here-now">0</span></div>
       <button>Start Auction</button>
     </form>
 
@@ -14,9 +13,11 @@
     </form>
   </div>
 
-  <div ng-if="not owner">
+  <div ng-if="!owner">
     <form name="watchForm" id="watch" ng-submit="watch()">
       <button>Join Auction</button>
     </form>
   </div>
+  
+  <div id="stream-info">Audience: <span id="here-now">0</span></div>
 </div>

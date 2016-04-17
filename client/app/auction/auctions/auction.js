@@ -31,12 +31,7 @@ angular.module('genesis.auction', [])
 
   //Auction Not Found
   $scope.DNE = function() {
-    console.log('dne');
-    console.log($(".auctionBody"));
-    $( ".auctionBody" ).empty();
-    $( ".auctionBody" ).append("<h1>Error: This Auction Does Not Exist!</h1>");
-    $( ".auctionBody" ).append("Return to Auctions: ");
-    $( ".auctionBody" ).append("Link Here");
+    Auction.DNE();
   };
 
   $scope.getAuction();
