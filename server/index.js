@@ -3,8 +3,8 @@ var app = require('./server');
 
 // ENV variables
 var port = process.env.PORT || 8080;
-var publish_key = process.env.PUB_KEY;
-var subscribe_key = process.env.SUB_KEY;
+var publish_key = process.env.PUBNUB_PUBLISH_KEY;
+var subscribe_key = process.env.PUBNUB_SUBSCRIBE_KEY;
 
 //current chat list users
 var users = [];
