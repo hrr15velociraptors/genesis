@@ -6,7 +6,6 @@ angular.module('genesis.home', [])
   $scope.getAuctions = function () {
     Auction.getAuctions()
       .then(function (data) {
-        console.log(data);
         $scope.allAuctions = data;
       });
   }

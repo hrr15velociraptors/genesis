@@ -10,6 +10,7 @@ var auctionSchema = mongoose.Schema({
   description: {type: String, required: true},
   duration: {type: String, required: true},
   end: {type: Date},
+  status: {type: String, default: 'Live', required: true},
   sprice: {type: Number, required: true},
   rprice: {type: Number, required: true},
   auctionId: {type: Number, default: 0},
@@ -18,11 +19,10 @@ var auctionSchema = mongoose.Schema({
 
 auctionSchema.pre('save', function (next) {
   var auction = this;
-
-  auction.end = new Date(new Date(auction.createdAt).getTime() + auction.duration * 60000);
+  auction.end = new Date(new Date().getTime() + auction.duration * 60000);
   next();
-
 });
+
 auctionSchema.plugin(timestamps);
 auctionSchema.plugin(relationship, {relationshipPathName: 'user'});
 

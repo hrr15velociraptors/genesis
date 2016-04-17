@@ -135,6 +135,10 @@ input.chatbox
   border-radius: 50px;
 }
 
+.aucthumb {
+  padding: 10px;
+}
+
 .aucthumb:hover {
   background-color: rgb(51,122,183);
   font-color: white;
