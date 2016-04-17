@@ -17,6 +17,7 @@ angular.module('genesis.profile',  [])
 
   $scope.createAuction = function () {
     $scope.auction.owner = JSON.parse($window.localStorage.getItem('com.genesis')).username;
+    $scope.auction.cprice = $scope.auction.sprice;
     Auction.createAuction($scope.auction).then(function (data) {
       $('.modal').modal('hide'); //  hide bootstrap modal (the gray background)
       $window.location.href= '#/auctions/' + data.auctionId; // change location to auctions/id

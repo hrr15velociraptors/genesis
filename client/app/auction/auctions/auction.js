@@ -7,11 +7,15 @@ angular.module('genesis.auction', [])
 
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
   $scope.auctionId = id;
+  $scope.bidData = {};
 
   $scope.bid = function () {
-    console.log('bid increased');
-    $scope.auctionData.sprice++;
-    $scope.auctionData.bids++;
+    $('#bid-btn').prop("disabled", true);
+    $scope.bidData.amount = Math.round($scope.auctionData.cprice + $scope.auctionData.cprice * 0.01, 2);
+    Auction.bid($scope.bidData).then(function (res) {
+      $('#bid-btn').prop("disabled", false);
+      $scope.auctionData = res.data;
+    });
   };
 
   //grab auction from API using URL
@@ -19,6 +23,8 @@ angular.module('genesis.auction', [])
     Auction.getAuction(id)
       .then(function (data) {
         $scope.auctionData = data;
+        $scope.bidData.auction = data._id;
+        $scope.bidData.amount = data.cprice;
         if (!data)  {
           $scope.DNE();
         }
