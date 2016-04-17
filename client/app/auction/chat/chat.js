@@ -4,7 +4,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
   // $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   //set URL ID as channel
-  var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
+  var id = $location.path().split("/")[2] + 'chat'; //domain.com/auctions/155125125215
 
   //disconnect when leaving page
   $scope.$on('$locationChangeStart', function(event) {
@@ -71,9 +71,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
             console.log(ngEvent);
             console.log('here is the incoming message:');
             console.log(m.sender_uuid);
-            if (m) {
               $scope.messages.unshift(m);
-            }
           });
       });
 

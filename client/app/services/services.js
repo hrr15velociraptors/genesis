@@ -71,8 +71,9 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     var ctrl = window.ctrl = CONTROLLER(phone, true);
     ctrl.ready(function(){
       ctrl.isStreaming(id, function(isOn){
-        if (isOn) ctrl.joinStream(id);
-        else alert("User is not streaming!");
+        // if (isOn) 
+        ctrl.joinStream(id);
+        // else alert("User is not streaming!");
       });
     });
     ctrl.receive(function(session){
