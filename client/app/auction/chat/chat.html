@@ -11,9 +11,9 @@
           </div>
      </form>
     </div>
-    
+
     <!-- View messages -->
-    <ul class="chat">
+    <ul>
      <li ng-repeat="message in messages">
        <img class="avatar" src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
        <span class="title"> {{message.sender_uuid}}: {{ message.content }}</span>
