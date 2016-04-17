@@ -1,13 +1,25 @@
 <div id="video">
 
   <!-- PubNub Video Embed -->
-  <div id="vid-box"><!-- Stream goes here --></div>
-  <form name="streamForm" id="stream" ng-submit="stream()">
-    <div id="stream-info">Audience: <span id="here-now">0</span></div>
-    <button>Start Auction</button>
-  </form>
+  <div id="vid-box" class="jumbotron clearfix">
+  <!-- Stream goes here -->
+  </div>
+  
+  <div ng-if="owner" id="owner">
+    <form ng-submit="stream()">
+      <button class="btn btn-success">Start Auction</button>
+    </form>
 
-  <form name="watchForm" id="watch" ng-submit="watch()">
-    <button ng-click="end()">End Auction</button>
-  </form>
+    <form ng-submit="end()">
+      <button class="btn btn-danger">End Auction</button>
+    </form>
+  </div>
+
+  <div ng-if="!owner" id="viewer">
+    <form ng-submit="watch()">
+      <button class="btn btn-warning">Join Auction</button>
+    </form>
+  </div>
+  
+  <div id="stream-info"><strong>Audience: <span id="here-now">0</span><strong></div>
 </div>

@@ -35,7 +35,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // PubNub Video Functionality
   var video_out  = document.getElementById("vid-box");
-  var embed_code = document.getElementById("embed-code");
   var here_now   = document.getElementById('here-now');
   var streamName;
 
@@ -52,9 +51,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     });
     var ctrl = window.ctrl = CONTROLLER(phone);
     ctrl.ready(function(){
-      // form.streamname.style.background="#55ff5b";
-      // ctrl.stream_submit.hidden="true";
-      console.log(streamName);
       ctrl.addLocalStream(video_out);
       ctrl.stream();  // Begin streaming video
     });
@@ -80,6 +76,8 @@ angular.module('genesis.services', ['pubnub.angular.service'])
       });
     });
     ctrl.receive(function(session){
+        console.log('session value:');
+        console.log(session);
         session.connected(function(session){ video_out.appendChild(session.video); });
         session.ended(function(session) {ctrl.getVideoElement(session.number).remove(); });
     });
@@ -134,10 +132,20 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         return res.data;
       });
     };
+    
+  var DNE = function() {
+    console.log('dne');
+    console.log($(".auctionBody"));
+    $( ".auctionBody" ).empty();
+    $( ".auctionBody" ).append("<h1>Error: This Auction Does Not Exist!</h1>");
+    $( ".auctionBody" ).append("Return to Auctions: ");
+    $( ".auctionBody" ).append("Link Here");
+  };
 
   return {
     getAuctions: getAuctions,
     getAuction: getAuction,
-    createAuction: createAuction
+    createAuction: createAuction,
+    DNE: DNE
   };
 });
