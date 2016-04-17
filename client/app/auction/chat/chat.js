@@ -71,7 +71,9 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
             console.log(ngEvent);
             console.log('here is the incoming message:');
             console.log(m.sender_uuid);
+            if (m) {
               $scope.messages.unshift(m);
+            }
           });
       });
 

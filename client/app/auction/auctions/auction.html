@@ -1,6 +1,6 @@
 <div ui-view="header"></div>
 <div ui-view="video"></div>
-
+<div ui-view="vidcontrols"></div>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -9,7 +9,7 @@
       <p><strong>Duration:</strong> {{ auctionData.duration }} </p>
       <button class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
       <p style="margin-top: 15px;"><strong>Current Bids:</strong> {{ auctionData.bids }}
-      <p><strong>Starting Price:</strong> ${{ auctionData.sprice }} | <strong>Reserve Price:</strong> ${{ auctionData.rprice }}</p>    
+      <p><strong>Starting Price:</strong> ${{ auctionData.sprice }} | <strong>Reserve Price:</strong> ${{ auctionData.rprice }}</p>
     </div>
     <div class="col-md-4" ui-view="chat"></div>
   </div>

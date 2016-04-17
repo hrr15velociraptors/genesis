@@ -8,13 +8,16 @@
   </div>
     <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="auction in allAuctions">
       <div class="thumbnail active aucthumb" ng-click="navToAuction(auction.auctionId)">
-        <h4><strong>{{ auction.title }}</strong></h4>
-        <p>{{ auction.sprice | number:2 | currency }}</p>
-        <p>{{ auction.rprice | number:2 | currency }}</p>
-        <p>{{ auction.duration }} minutes left</p>
+
+        <h5>{{ auction.title }}</h5>
+        <hr>
+        <div>Status: <strong> {{ auction.status }} </strong></div>
+        <div>Price: <strong> {{ auction.sprice | currency }} </strong></div>
+        <div>Bids: <strong> {{ auction.bids.length }} </strong></div>
+        <div>Ends at: <strong> {{ auction.end | date : 'shortTime' : 'PT'}} </strong></div>
       </div>
     </div>
-    
+
     <!-- Carousel Bootstrap -->
     <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -24,8 +27,8 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active"></div>
-        <div class="item"></div>  
-        <div class="item"></div>  
+        <div class="item"></div>
+        <div class="item"></div>
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"></a>
       <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"></a>

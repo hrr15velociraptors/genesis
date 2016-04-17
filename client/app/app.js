@@ -37,6 +37,10 @@ angular.module('genesis', [
           templateUrl: 'app/auction/auctions/auction.html',
           controller: 'AuctionController'
         },
+        'vidcontrols@auction': {
+          templateUrl: 'app/auction/video/vidcontrols.html',
+          controller: 'VideoController'
+        },
         'chat@auction': {
           templateUrl: 'app/auction/chat/chat.html',
           controller: 'ChatController'

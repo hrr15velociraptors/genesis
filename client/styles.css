@@ -3,36 +3,22 @@ body {
 }
 
 video {
-    z-index: 0;
-    width: 100%;
+  position: relative;
+  z-index: -50;
+  width: 100%;
 }
-div#vid-box {
+
+#vid-box {
     max-height: 600px;
     /*min-width: 300px;*/
-    z-index: 0;
+    z-index: -50;
     opacity: .8;
 }
 
-/*#auction {
-  float: left;
-  z-index: 4;
-}*/
-
-#stream-info {
+.vid-buttons {
+  position: relative;
   z-index: 100;
 }
-
-#viewer {
-  z-index: 100;
-}
-
-#owner {
-  z-index: 100;
-}
-/*video {
-  border-radius: 400px;
-  border: rgb(51,122,183) solid 5px;
-}*/
 
 img.avatar
 {
@@ -64,7 +50,7 @@ img.avatar
 }
 
 span {
-  
+
 }
 
 ul.chat:hover {
@@ -135,11 +121,14 @@ input.chatbox
   border-radius: 50px;
 }
 
+.aucthumb {
+  padding: 10px;
+}
+
 .aucthumb:hover {
   background-color: rgb(51,122,183);
   font-color: white;
 }
-
 ./*messages {
   font-size: smaller;
   padding-top: 5px;

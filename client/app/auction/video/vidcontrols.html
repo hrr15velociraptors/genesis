@@ -1,0 +1,26 @@
+<div class="container vid-buttons">
+  <div class="row">
+    <div ng-if="owner" id="owner">
+      <div ng-if="!on">
+        <form ng-submit="stream(); toggle();">
+          <button class="btn btn-success">Start Auction</button>
+        </form>
+      </div>
+
+      <div ng-if="on" id="end-button">
+        <form ng-submit="end(); toggle();">
+          <button class="btn btn-danger">End Auction</button>
+        </form>
+      </div>
+    </div>
+
+    <div ng-if="!owner" id="viewer">
+      <div ng-if="!on">
+        <form ng-submit="watch(); toggle();">
+          <button class="btn btn-warning">Join Auction</button>
+        </form>
+      </div>
+    </div>
+   <div id="stream-info"><strong>Audience: <span id="here-now">0</span><strong></div>
+  </div>
+</div>

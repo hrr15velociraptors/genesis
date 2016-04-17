@@ -9,10 +9,18 @@ var auctionSchema = mongoose.Schema({
   title: {type: String, required: true},
   description: {type: String, required: true},
   duration: {type: String, required: true},
+  end: {type: Date},
+  status: {type: String, default: 'Live', required: true},
   sprice: {type: Number, required: true},
   rprice: {type: Number, required: true},
   auctionId: {type: Number, default: 0},
   owner: {type: String, require: true}
+});
+
+auctionSchema.pre('save', function (next) {
+  var auction = this;
+  auction.end = new Date(new Date().getTime() + auction.duration * 60000);
+  next();
 });
 
 auctionSchema.plugin(timestamps);
