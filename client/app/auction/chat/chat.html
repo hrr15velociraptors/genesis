@@ -1,7 +1,18 @@
 <div id="auction">
 
-    <!-- View messages -->
     <h4>Auction Room</h4>
+    <!-- Post messages -->
+    <div class="chat">
+      <form ng-submit="sendMessage()" class="container">
+          <div class="row">
+              <input class="chatbox" ng-model="messageContent" type="text" placeholder="Type your message" >
+              <button class="btn btn-primary" type="submit">Send</button>
+            <div class="input-field col s2"></div>
+          </div>
+     </form>
+    </div>
+    
+    <!-- View messages -->
     <ul class="collection">
      <li ng-repeat="message in messages">
        <img class="avatar" src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
@@ -10,14 +21,4 @@
      </li>
     </ul>
 
-      <!-- Post messages -->
-      <div class="chat">
-        <form ng-submit="sendMessage()" class="container">
-            <div class="row">
-                <input class="chatbox" ng-model="messageContent" type="text" placeholder="Type your message" >
-                <button class="btn btn-primary" type="submit">Send</button>
-              <div class="input-field col s2"></div>
-            </div>
-       </form>
-      </div>
  </div>

@@ -49,8 +49,9 @@ img.avatar
 
 .chat
 {
-    margin-top: 370px;
+    margin-bottom: 20px;
     font-size: 20px;
+    padding-left: 5px;
     /*position: fixed; used to be fixed. not sure how to style */
     right: 20px;
     top: 80px;

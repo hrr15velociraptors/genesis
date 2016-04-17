@@ -67,7 +67,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
       // Listening to messages sent.
       $scope.$on(Pubnub.getMessageEventNameFor($scope.channel), function(ngEvent, m) {
           $scope.$apply(function() {
-              $scope.messages.push(m)
+              $scope.messages.unshift(m);
           });
       });
 
