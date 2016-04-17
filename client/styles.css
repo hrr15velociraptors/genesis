@@ -3,14 +3,21 @@ body {
 }
 
 video {
-    z-index: 0;
-    width: 100%;
+  position: relative;
+  z-index: -50;
+  width: 100%;
 }
-div#vid-box {
+
+#vid-box {
     max-height: 600px;
     /*min-width: 300px;*/
-    z-index: 0;
+    z-index: -50;
     opacity: .8;
+}
+
+.vid-buttons {
+  position: relative;
+  z-index: 100;
 }
 
 /*#auction {
@@ -64,7 +71,7 @@ img.avatar
 }
 
 span {
-  
+
 }
 
 ul.chat:hover {
@@ -143,7 +150,6 @@ input.chatbox
   background-color: rgb(51,122,183);
   font-color: white;
 }
-
 ./*messages {
   font-size: smaller;
   padding-top: 5px;

@@ -93,14 +93,10 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     ctrl.hangup();
   };
 
-  var toggle = function() {
-    var bool = false;
-    return function() {
-      bool = bool ? false: true;
-      return bool;
-    };
+  var toggle = function(on) {
+    return !on;
   };
-  
+
   return {
     stream: stream,
     watch: watch,
@@ -141,7 +137,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         return res.data;
       });
     };
-    
+
   var DNE = function() {
     console.log('dne');
     console.log($(".auctionBody"));
