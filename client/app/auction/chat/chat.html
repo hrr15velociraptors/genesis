@@ -1,17 +1,17 @@
 <div id="auction">
-  <body ng-controller="ChatController">
 
     <!-- View messages -->
-    <ul>
+    <h4>Auction Room</h4>
+    <ul class="collection">
      <li ng-repeat="message in messages">
-       <img src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
+       <img class="avatar" src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
        <span class="title"> {{username}}: {{ message.content }}</span>
-       <p>{{ message.date | date:"MM/dd/yyyy 'at' h:mma"}}</br></p>
+       <p style="font-size: 12px">{{ message.date | date:"MM/dd/yyyy 'at' h:mma"}}</br></p>
      </li>
-</ul>
+    </ul>
 
       <!-- Post messages -->
-      <div>
+      <div class="chat">
         <form ng-submit="sendMessage()" class="container">
             <div class="row">
                 <input class="chatbox" ng-model="messageContent" type="text" placeholder="Type your message" >
@@ -20,6 +20,4 @@
             </div>
        </form>
       </div>
-    </ul>
-  </body>
-</div>
+ </div>

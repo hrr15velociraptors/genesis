@@ -1,12 +1,15 @@
 <div ui-view="header"></div>
-<h1>Title: {{ auctionData.title }} </h1>
-<div ui-view="video"></div>
-  <div>
-    <p>Description: {{ auctionData.description }} </p>
-    <p>Duration: {{ auctionData.duration }} </p>
+<div class="jumbotron" ui-view="video"></div>
+<div class="container">
+  <h1>Item: {{ auctionData.title }} </h1>
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>Description:</strong> {{ auctionData.description }} </p>
+      <p><strong>Duration:</strong> {{ auctionData.duration }} </p>
+      <button class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
+      <p><strong>Current Bids:</strong> {{ auctionData.bids }}
+      <p><strong>Starting Price:</strong> ${{ auctionData.sprice }} | <strong>Reserve Price:</strong> ${{ auctionData.rprice }}</p>    
+    </div>
+    <div class="col-md-6" ui-view="chat"></div>
   </div>
-
-  <button class="btn btn-primary" ng-click="bid()"> Bid $1 </button>
-  Current Bids: {{ auctionData.bids }} | Starting Price: ${{ auctionData.sprice }} | Reserve Price: ${{ auctionData.rprice }}
 </div>
-<div ui-view="chat"></div>

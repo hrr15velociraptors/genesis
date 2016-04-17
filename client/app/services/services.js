@@ -134,10 +134,20 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         return res.data;
       });
     };
+    
+  var DNE = function() {
+    console.log('dne');
+    console.log($(".auctionBody"));
+    $( ".auctionBody" ).empty();
+    $( ".auctionBody" ).append("<h1>Error: This Auction Does Not Exist!</h1>");
+    $( ".auctionBody" ).append("Return to Auctions: ");
+    $( ".auctionBody" ).append("Link Here");
+  };
 
   return {
     getAuctions: getAuctions,
     getAuction: getAuction,
-    createAuction: createAuction
+    createAuction: createAuction,
+    DNE: DNE
   };
 });

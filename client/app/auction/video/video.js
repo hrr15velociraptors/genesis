@@ -1,9 +1,27 @@
 angular.module('genesis.video', ['pubnub.angular.service'])
 
-.controller('VideoController', function($scope, $location, Keys, Video) {
+.controller('VideoController', function($scope, $window, $location, Keys, Video, Auction) {
 
   //use ID as channel
-  var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
+  var id = $location.path().split("/")[2]; //domain.com/auctions/15
+
+  $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
+  
+  // set owner property on $scope
+  $scope.getAuction = function() {
+    Auction.getAuction(id)
+      .then(function (data) {
+        console.log(data);
+        $scope.owner = data.owner === $scope.username ? true: false;
+        //show auction DNE error
+        if (!data)  {
+          $scope.DNE();
+        }
+      })
+  };
+  
+  // set ownership on $scope
+  $scope.getAuction();
 
   // need access to keys
   Keys.then(function(pub_sub) {
