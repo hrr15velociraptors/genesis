@@ -10,7 +10,7 @@
       <img style="display: inline; margin-top: 7px; margin-right: 5px"width="80" height="32"title="genesis logo" class="img-circle img-responsive" src="../.././img/genesis.jpg">
       <a class="navbar-brand" href="#/auctions"><span>GENESIS</span></a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
+    <div ng-if ='checkToken()' id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#/auctions">Home</a></li>
       </ul>
