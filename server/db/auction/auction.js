@@ -13,8 +13,9 @@ var auctionSchema = mongoose.Schema({
   status: {type: String, default: 'Live', required: true},
   sprice: {type: Number, required: true},
   rprice: {type: Number, required: true},
+  cprice: {type: Number, required: true},
   auctionId: {type: Number, default: 0},
-  owner: {type: String, require: true}
+  owner: {type: String, required: true}
 });
 
 auctionSchema.pre('save', function (next) {
