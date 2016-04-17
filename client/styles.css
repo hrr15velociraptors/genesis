@@ -132,11 +132,14 @@ input.chatbox
 
 .thumb {
   margin-bottom: 20px;
+  border-radius: 50px;
 }
 
 .aucthumb:hover {
-  background-color: #eee;
+  background-color: rgb(51,122,183);
+  font-color: white;
 }
+
 ./*messages {
   font-size: smaller;
   padding-top: 5px;

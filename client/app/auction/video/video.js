@@ -4,9 +4,12 @@ angular.module('genesis.video', ['pubnub.angular.service'])
 
   //use ID as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/15
-
-  $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
+  $scope.on = false;
   
+  $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
+  $scope.toggle = function() {
+    $scope.on = Video.toggle();
+  };
   // set owner property on $scope
   $scope.getAuction = function() {
     Auction.getAuction(id)
