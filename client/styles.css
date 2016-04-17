@@ -67,6 +67,10 @@ span {
   
 }
 
+ul.chat:hover {
+  display: hidden;
+}
+
 ul.chat
 {
   width: 150%;

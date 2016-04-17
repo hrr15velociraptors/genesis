@@ -76,6 +76,8 @@ angular.module('genesis.services', ['pubnub.angular.service'])
       });
     });
     ctrl.receive(function(session){
+        console.log('session value:');
+        console.log(session);
         session.connected(function(session){ video_out.appendChild(session.video); });
         session.ended(function(session) {ctrl.getVideoElement(session.number).remove(); });
     });

@@ -1,7 +1,7 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
 .controller('ChatController', function ($window, $scope, $location, Auth, Pubnub, Keys, Auction) {
-  $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
+  // $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   //set URL ID as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/155125125215
@@ -34,7 +34,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
 
       $scope.messageContent = '';
       // Generating a random uuid between 1 and 100 using utility function from lodash library.
-      $scope.uuid = 10000;
+      $scope.uuid;
 
       // Send the messages over PubNub Network
       $scope.sendMessage = function() {
@@ -67,6 +67,10 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
       // Listening to messages sent.
       $scope.$on(Pubnub.getMessageEventNameFor($scope.channel), function(ngEvent, m) {
           $scope.$apply(function() {
+            console.log('this is an ng event');
+            console.log(ngEvent);
+            console.log('here is the incoming message:');
+            console.log(m.sender_uuid);
               $scope.messages.unshift(m);
           });
       });

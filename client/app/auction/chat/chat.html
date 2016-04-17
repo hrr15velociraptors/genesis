@@ -16,7 +16,7 @@
     <ul class="chat">
      <li ng-repeat="message in messages">
        <img class="avatar" src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
-       <span class="title"> {{username}}: {{ message.content }}</span>
+       <span class="title"> {{message.sender_uuid}}: {{ message.content }}</span>
        <p style="font-size: 12px">{{ message.date | date:"MM/dd/yyyy 'at' h:mma"}}</br></p>
      </li>
     </ul>
