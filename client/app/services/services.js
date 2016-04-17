@@ -93,10 +93,19 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     ctrl.hangup();
   };
 
+  var toggle = function() {
+    var bool = false;
+    return function() {
+      bool = bool ? false: true;
+      return bool;
+    };
+  };
+  
   return {
     stream: stream,
     watch: watch,
-    end: end
+    end: end,
+    toggle: toggle
   };
 
 })
