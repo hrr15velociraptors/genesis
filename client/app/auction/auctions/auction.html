@@ -11,7 +11,7 @@
       <p><strong>Ends on:</strong> {{ auctionData.end | date : 'medium' : 'PT'}} </p>
       <button id="bid-btn" class="btn btn-primary" ng-click="bid()" ng-disabled="ended"> Outbid </button>
       <p style="margin-top: 15px;"><strong>Current Bids:</strong> {{ auctionData.bids.length }}</p>
-      <p><strong>Starting Price:</strong> {{ auctionData.sprice | number: 2 | currency }} | <strong><strong>Current Price:</strong> {{ auctionData.cprice | number: 2 | currency }}</strong></p>
+      <p><strong>Starting Price:</strong> {{ auctionData.sprice | currency }} | <strong><strong>Current Price:</strong> {{ auctionData.cprice | currency }}</strong></p>
     </div>
     <div ng-hide="ended" class="chat col-md-4" ui-view="chat"></div>
   </div>
