@@ -11,9 +11,7 @@ angular.module('genesis.video', ['pubnub.angular.service'])
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   $scope.toggle = function() {
-    console.log('TOGGLE BEING CALLED');
     $scope.on = Video.toggle($scope.on);
-    $scope.$apply();
   };
 
   // set owner property on $scope
@@ -36,23 +34,21 @@ angular.module('genesis.video', ['pubnub.angular.service'])
 
     // PubNub Video Functionality
     $scope.stream = function() {
-        Video.stream(pub_sub, id, function(occupancy) {
-          console.log('OCCUPANCY BEING ADDED');
-          $scope.audience = occupancy;
+        Video.stream(pub_sub, id, function(m) {
+          $scope.audience = m.occupancy;
+          $scope.$apply();
         });
-        $scope.$apply();
     };
 
     $scope.watch = function() {
-        Video.watch(pub_sub, id, function(occupancy) {
-          $scope.audience = occupancy;
+        Video.watch(pub_sub, id, function(m) {
+          $scope.audience = m.occupancy;
+          $scope.$apply();
         });
-        $scope.$apply();
     };
 
     $scope.end = function() {
         Video.end(pub_sub, id);
-        $scope.$apply();
     };
 
   });
