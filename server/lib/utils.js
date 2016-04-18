@@ -25,20 +25,29 @@ Scheduler.prototype.done = function () {
       console.log(err)
     }
     Bid.find({
-     '_id': { $in: auction.bids }
-     }, function(err, bids){
-         if(err) {
-           console.log(err);
-         }
-         var highest = auction.sprice;
-         var winner = null;
-         bids.forEach(function (bid) {
+      '_id': { $in: auction.bids }
+      }, function(err, bids){
+        if(err) {
+          console.log(err);
+        }
+        var highest = auction.sprice;
+        var winner = null;
+
+        bids.forEach(function (bid) {
           if (bid.amount > highest) {
-            highest = bid.amount;
-            winner = bid.user;
+          highest = bid.amount;
+          winner = bid.user;
           }
          });
-         console.log(highest, winner);
+
+          if (highest > auction.rprice) {
+            auction.winner = winner;
+            auction.status = 'Sold'
+            auction.save();
+          } else {
+            auction.status = 'Ended'
+            auction.save();
+          }
        });
   })
 }

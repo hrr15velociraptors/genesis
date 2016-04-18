@@ -9,6 +9,7 @@ var userSchema = mongoose.Schema({
   email: String,
   firstName: String,
   lastName: String,
+  wonAuctions: [{type: mongoose.Schema.ObjectId, ref: 'Auction'}],
   auctions: [{type: mongoose.Schema.ObjectId, ref: 'Auction'}],
   bids: [{type: mongoose.Schema.ObjectId, ref: 'Bid'}]
 });

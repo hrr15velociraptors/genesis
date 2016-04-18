@@ -5,6 +5,7 @@ var autoIncrement = require('mongoose-auto-increment');
 
 var auctionSchema = mongoose.Schema({
   user: {type: mongoose.Schema.ObjectId, ref: 'User', childPath: 'auctions'},
+  winner: {type: mongoose.Schema.ObjectId, ref: 'User', childPath: 'wonAuctions'},
   bids: [{type: mongoose.Schema.ObjectId, ref: 'Bid', childPath: 'auction'}],
   title: {type: String, required: true},
   description: {type: String, required: true},
@@ -26,6 +27,8 @@ auctionSchema.pre('save', function (next) {
 
 auctionSchema.plugin(timestamps);
 auctionSchema.plugin(relationship, {relationshipPathName: 'user'});
+auctionSchema.plugin(relationship, {relationshipPathName: 'winner'});
+
 
 auctionSchema.plugin(autoIncrement.plugin, { model: 'Auction', field: 'auctionId' });
 
