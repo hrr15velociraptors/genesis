@@ -13,8 +13,9 @@ module.exports.postBid = function (req, res) {
       if (err) {
         res.status(404).send('err');
       }
-      var io = require("./../index").io;
-      io.emit('bid', {cprice: auction.cprice});
+      // var io = require("./../index").io;
+      var socket = require("./../index").socket;
+      socket.emit('bid', {cprice: auction.cprice , bids: auction.bids});
       res.json(auction);
     });
   });
