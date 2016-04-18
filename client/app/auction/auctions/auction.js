@@ -1,9 +1,16 @@
 angular.module('genesis.auction', [])
 
 .controller('AuctionController', function($scope, $window, Auction, $location) {
-
   //Grabbing ID from URL
+  $scope.winner = '(none)'
   var id = $location.path().split("/")[2]; //domain.com/auctions/15
+
+  var socket = io();
+  socket.on('end_auc', function (data) {
+    $scope.live = true;
+    $scope.winner = data.user;
+    $scope.auctionData = data.auction;
+  });
 
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
   $scope.auctionId = id;
@@ -25,6 +32,7 @@ angular.module('genesis.auction', [])
         $scope.auctionData = data;
         $scope.bidData.auction = data._id;
         $scope.bidData.amount = data.cprice;
+        $scope.live = !(data.status === "Live");
         if (!data)  {
           $scope.DNE();
         }
