@@ -1,18 +1,18 @@
 <div ui-view="header"></div>
-<div ui-view="video"></div>
-<div ui-view="vidcontrols"></div>
+<div ui-view="video" ng-hide="ended"></div>
+<div ui-view="vidcontrols" ng-hide="ended"></div>
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div ng-style="auctionBody" class="col-md-6">
       <h1>Item: {{ auctionData.title }} </h1>
       <p><strong>Status: </strong>{{ auctionData.status }}</p>
       <p><strong>Winner: </strong>{{ winner }}</p>
       <p><strong>Description:</strong> {{ auctionData.description }} </p>
       <p><strong>Ends on:</strong> {{ auctionData.end | date : 'medium' : 'PT'}} </p>
       <button id="bid-btn" class="btn btn-primary" ng-click="bid()" ng-disabled="ended"> Outbid </button>
-      <p style="margin-top: 15px;"><strong>Current Bids:</strong> {{ auctionData.bids.length }}
-      <p><strong>Starting Price:</strong> ${{ auctionData.sprice | number: 2 | currency }} | <strong><strong>Current Price:</strong> ${{ auctionData.cprice | number: 2 | currency }}</strong></p>
+      <p style="margin-top: 15px;"><strong>Current Bids:</strong> {{ auctionData.bids.length }}</p>
+      <p><strong>Starting Price:</strong> {{ auctionData.sprice | number: 2 | currency }} | <strong><strong>Current Price:</strong> {{ auctionData.cprice | number: 2 | currency }}</strong></p>
     </div>
-    <div class="chat col-md-4" ui-view="chat"></div>
+    <div ng-hide="ended" class="chat col-md-4" ui-view="chat"></div>
   </div>
 </div>
