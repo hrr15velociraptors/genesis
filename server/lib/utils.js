@@ -48,10 +48,15 @@ Scheduler.prototype.done = function () {
             auction.status = 'Ended'
             auction.save();
           }
-          User.findById(winner, function (err, user) {
+          if (winner) {
+            User.findById(winner, function (err, user) {
+              var io = require('./../index').io;
+              io.emit('end_auc', {winner: user.username, auction: auction});
+            })
+          } else {
             var io = require('./../index').io;
-            io.emit('end_auc', {winner: user.username, auction: auction});
-          })
+            io.emit('end_auc', {winner: '(none)', auction: auction});
+          }
        });
   })
 }

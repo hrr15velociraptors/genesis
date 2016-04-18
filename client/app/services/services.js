@@ -24,7 +24,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // Wrap videochat controller in promise, ensure access to keys
   return $http.get('/keys').then(function(keys) {
-      console.log('here are the keys on client:');
       // console.log(keys);
       var pub_sub = keys.data;
       return pub_sub;
