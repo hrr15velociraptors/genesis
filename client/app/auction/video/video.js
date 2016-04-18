@@ -1,7 +1,7 @@
 angular.module('genesis.video', ['pubnub.angular.service'])
 
 .controller('VideoController', function($scope, $window, $location, Keys, Video, Auction) {
-
+  $scope.audience = 0;
   // use ID on URL as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/15
 
@@ -37,8 +37,8 @@ angular.module('genesis.video', ['pubnub.angular.service'])
     $scope.stream = function() {
         Video.stream(pub_sub, id, function(occupancy) {
           $scope.audience = occupancy;
+          $scope.apply();
         });
-        $scope.apply();
     };
 
     $scope.watch = function() {
@@ -48,6 +48,7 @@ angular.module('genesis.video', ['pubnub.angular.service'])
 
     $scope.end = function() {
         Video.end(pub_sub, id);
+        $scope.apply();
     };
 
   });
