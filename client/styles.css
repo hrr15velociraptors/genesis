@@ -7,14 +7,12 @@ body {
 video {
   position: relative;
   z-index: -50;
-  width: 1350px;
-  margin-left: 220px;
+  width: 100%;
   margin-top: -20px;
 
 }
 
 .col-md-6 {
-  /*margin-top: 200px;*/
   opacity: .6;
   background-color: white;
   text-align: center;
@@ -24,7 +22,6 @@ video {
 
 #vid-box {
     max-height: 0px;
-    /*min-width: 300px;*/
     z-index: -50;
     opacity: .8;
 }
