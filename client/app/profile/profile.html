@@ -6,24 +6,18 @@
                 </div>
                 <div class="row">
               		<div class="col-sm-3"><!--left col-->
-
                       <ul class="list-group">
                         <li class="list-group-item text-muted">Profile Settings</li>
                         <li class="list-group-item text-right"><span class="pull-left"><strong>Username: </strong></span>{{user.username}}</li>
                         <li class="list-group-item text-right"><span class="pull-left"><strong>Full Name: </strong></span>{{user.firstName}}  {{user.lastName}}</li>
                   <li class="list-group-item text-right"><span class="pull-left"><strong>Email: </strong></span>{{user.email}}</li>
-
                       </ul>
-
                     </div><!--/col-3-->
                 	<div class="col-sm-9">
-
                       <ul class="nav nav-tabs" id="myTab">
                         <li class="active"><a href="#myauctions" data-toggle="tab">MyAuctions</a></li>
                         <li><a href="#mybids" data-toggle="tab">MyBids</a></li>
                       </ul>
-
-
                           <table class="table table-hover">
                             <thead>
                               <tr>
@@ -40,19 +34,12 @@
                               </tr>
                             </tbody>
                           </table>
-
-
                       <div class="tab-content">
                         <div class="tab-pane active" id="myauctions">
                           <div class="table-responsive">
-
-
                             <hr>
-
                           </div><!--/table-resp-->
-
                           <hr>
-
                          </div><!--/tab-pane-->
                           </div><!--/tab-pane-->
                       </div><!--/tab-content-->
@@ -84,27 +71,27 @@
                     <form ng-controller='CreateAucController' role="form" ng-submit='createAuction()'>
                       <div class="form-group">
                         <label for="auctionname">Auction Title</label>
-                          <input ng-model='auction.title' type="text" class="form-control"
+                          <input ng-model='auction.title' required type="text" class="form-control"
                           id="auctiontitle" placeholder="Enter Title"/>
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>
-                          <textarea ng-model='auction.description' height='200' size='250' type="text" class="form-control"
+                          <textarea ng-model='auction.description' required height='200' size='250' type="text" class="form-control"
                             id="description" placeholder="Description"></textarea>
                       </div>
                       <div class="form-group">
                         <label for="sprice">Starting Price</label>
-                          <input ng-model='auction.sprice' type="number" class="form-control"
+                          <input ng-model='auction.sprice' required type="number" class="form-control"
                             id="sprice" placeholder="Price"/>
                       </div>
                       <div class="form-group">
                         <label for="rprice">Reserved Price</label>
-                          <input ng-model='auction.rprice' type="number" class="form-control"
+                          <input ng-model='auction.rprice' required type="number" class="form-control"
                             id="rprice" placeholder="Price"/>
                       </div>
                       <div class="form-group">
                         <label for="duration">Auction Duration</label>
-                          <input ng-model='auction.duration' type="number" class="form-control"
+                          <input ng-model='auction.duration' required  type="number" class="form-control"
                             id="duration" placeholder="Enter Duration in Minutes"/>
                       </div>
                       <button type="submit" class="btn btn-default">Save Auction</button>

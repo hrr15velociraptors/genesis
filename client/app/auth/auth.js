@@ -2,7 +2,7 @@ angular.module('genesis.auth', [])
 
 .controller('AuthController', function($scope, $location, $window, Auth, $rootScope) {
   $scope.user = {};
-
+  $scope.password_c = '';
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (data) {
@@ -24,25 +24,25 @@ angular.module('genesis.auth', [])
         console.error(error);
       });
   };
+
+
 })
-// .directive('compareTo', function() {
-//   return {
-//     require: "ngModel",
-//     scope: {
-//       otherModelValue: "=compareTo"
-//     },
-//     link: function(scope, element, attributes, ngModel) {
-//
-//       ngModel.$validators.compareTo = function(modelValue) {
-//         return modelValue == scope.otherModelValue;
-//       };
-//
-//       scope.$watch("otherModelValue", function() {
-//         ngModel.$validate();
-//       });
-//     }
-//   };
-// })
+.directive('validPasswordC', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elm, attrs, ctrl) {
+            ctrl.$parsers.unshift(function (viewValue, $scope) {
+                if (viewValue === scope.signUpForm.password.$viewValue) {
+                  noMatch = true;
+                } else {
+                  noMatch = false;
+                }
+                ctrl.$setValidity('noMatch', noMatch);
+                return noMatch ? noMatch : undefined;
+            })
+        }
+    }
+})
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
