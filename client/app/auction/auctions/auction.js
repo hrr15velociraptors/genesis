@@ -7,11 +7,16 @@ angular.module('genesis.auction', [])
   var id = $location.path().split("/")[2]; //domain.com/auctions/15
 
   var socket = io();
+
   socket.on('end_auc', function (data) {
     console.log(data);
     $scope.ended = true;
     $scope.winner = data.winner;
     $scope.auctionData = data.auction;
+  });
+
+  socket.on('bid', function (data) {
+    $scope.auctionData.cprice = data.cprice;
   });
 
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
