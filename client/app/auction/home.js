@@ -17,4 +17,10 @@ angular.module('genesis.home', ['ngAnimate', 'ui.bootstrap'])
 
   //initial load
   $scope.getAuctions();
+  
+  // carousel params
+  $scope.myInterval = 2000;
+  $scope.noWrapSlides = false;
+  $scope.active = 0;
+
 });
