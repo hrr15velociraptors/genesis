@@ -8,7 +8,8 @@ angular.module('genesis.video', ['pubnub.angular.service'])
   
   // state of video buttons
   $scope.on = false;
-
+  $scope.audience = 0;
+  
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   $scope.toggle = function() {
@@ -35,7 +36,9 @@ angular.module('genesis.video', ['pubnub.angular.service'])
 
     // PubNub Video Functionality
     $scope.stream = function() {
-        Video.stream(pub_sub, id);
+        Video.stream(pub_sub, id, function(occupancy) {
+          $scope.audience = occupancy;
+        });
     };
 
     $scope.watch = function() {
