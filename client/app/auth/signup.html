@@ -1,69 +1,79 @@
-<div ui-view="header"></div>
-<div class="container">
+<div ui-view='header'></div>
+<div class='container'>
     <h1>Sign up</h1>
   	<hr>
-	<div class="row">
+	<div class='row'>
       <!-- edit form column -->
-      <div class="col-md-9">
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">First name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" placeholder="First Name" required autofocus ng-model='user.firstName' >
+      <div class='col-md-9'>
+        <form name='signUpForm' class='form-horizontal' ng-submit='signup()'>
+          <div class='form-group'>
+            <label class='col-lg-3 control-label'>First name:</label>
+            <div class='col-lg-8'>
+              <input class='form-control' name='fname' type='text' placeholder='First Name' required autofocus ng-model='user.firstName' required>
+              <p ng-show='signUpForm.fname.$invalid' class='help-block'>First Name is required.</p>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Last name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" placeholder="Last Name" required autofocus ng-model='user.lastName'>
+          <div class='form-group'>
+            <label class='col-lg-3 control-label'>Last name:</label>
+            <div class='col-lg-8'>
+              <input class='form-control' name='lname' type='text' placeholder='Last Name' required autofocus ng-model='user.lastName'required>
+              <p ng-show='signUpForm.lname.$invalid' class='help-block'>Last Name is required.</p>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" placeholder="Email" required autofocus ng-model='user.email'>
+          <div class='form-group'>
+            <label class='col-lg-3 control-label'>Email:</label>
+            <div class='col-lg-8'>
+              <input class='form-control' name='email' type='email' placeholder='Email' required autofocus ng-model='user.email'required>
+              <p ng-show='signUpForm.email.$invalid' class='help-block'>Email is required.</p>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Time Zone:</label>
-            <div class="col-lg-8">
-              <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
-                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                  <option value="Alaska">(GMT-09:00) Alaska</option>
-                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                  <option value="Arizona">(GMT-07:00) Arizona</option>
-                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+          <div class='form-group'>
+            <label class='col-lg-3 control-label'>Time Zone:</label>
+            <div class='col-lg-8'>
+              <div class='ui-select'>
+                <select id='user_time_zone' class='form-control'>
+                  <option value='Hawaii'>(GMT-10:00) Hawaii</option>
+                  <option value='Alaska'>(GMT-09:00) Alaska</option>
+                  <option value='Pacific Time (US &amp; Canada)'>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                  <option value='Arizona'>(GMT-07:00) Arizona</option>
+                  <option value='Mountain Time (US &amp; Canada)'>(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                  <option value='Central Time (US &amp; Canada)' selected='selected'>(GMT-06:00) Central Time (US &amp; Canada)</option>
+                  <option value='Eastern Time (US &amp; Canada)'>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                  <option value='Indiana (East)'>(GMT-05:00) Indiana (East)</option>
                 </select>
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Username:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="text" placeholder="Username" required autofocus ng-model='user.username'>
+          <div class='form-group'>
+            <label class='col-md-3 control-label'>Username:</label>
+            <div class='col-md-8'>
+              <input class='form-control' name='username' type='text' placeholder='Username' required autofocus ng-model='user.username' required ng-minlength='5'>
+              <p ng-show='signUpForm.username.$invalid' class='help-block'>Username is required.</p>
+              <p ng-show='signUpForm.username.$error.minlength' class='help-block'>Username should be longer than 5 characters.</p>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Password:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="password" placeholder="Password" required autofocus ng-model='user.password'>
+          <div class='form-group'>
+            <label for='password' class='col-md-3 control-label'>Password:</label>
+            <div class='col-md-8'>
+            <input class='form-control' type='password' id='password' name='password' ng-model='user.password' ng-minlength='6' ng-maxlength='12' ng-pattern='/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/' required  />
+            <p ng-show='signUpForm.password.$error.required && signUpForm.password.$dirty'>Password is required</p>
+            <p ng-show='!signUpForm.password.$error.required && (signUpForm.password.$error.minlength || signUpForm.password.$error.maxlength) && signUpForm.password.$dirty'>Passwords must be between 6 and 12 characters.</p>
+            <p ng-show='!signUpForm.password.$error.required && !signUpForm.password.$error.minlength && !signUpForm.password.$error.maxlength && signUpForm.password.$error.pattern && signUpForm.password.$dirty'>Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</p>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Confirm password:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="password" placeholder="Confirm Password" required autofocus ng-model='user.password'>
+          <div class='form-group'>
+            <label for='password_c' class='col-md-3 control-label'>Confirm password:</label>
+            <div class='col-md-8'>
+              <input class='form-control' id='password_c' name='password_c' type='password' ng-model='password_c' valid-password-c required />
+              <p ng-show='signUpForm.password_c.$error.required && signUpForm.password_c.$dirty'>Please confirm your password.</p>
+              <p ng-show='!signUpForm.password_c.$error.required && signUpForm.password_c.$error.noMatch && signUpForm.password.$dirty'>Passwords do not match.</p>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Signup" ng-click='signup()'>
-              <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+          <div class='form-group'>
+            <label class='col-md-3 control-label'></label>
+            <div class='col-md-8'>
+              <button type='submit' class='btn btn-primary' ng-disabled='!signUpForm.$valid'>Submit</button>
+              <a href='#/signin'>Already have an account? <strong>Signin</strong> ...</a>
             </div>
           </div>
         </form>
