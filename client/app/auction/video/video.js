@@ -13,6 +13,7 @@ angular.module('genesis.video', ['pubnub.angular.service'])
 
   $scope.toggle = function() {
     $scope.on = Video.toggle($scope.on);
+    $scope.apply();
   };
 
   // set owner property on $scope
@@ -37,8 +38,8 @@ angular.module('genesis.video', ['pubnub.angular.service'])
     $scope.stream = function() {
         Video.stream(pub_sub, id, function(occupancy) {
           $scope.audience = occupancy;
-          $scope.apply();
         });
+        $scope.apply();
     };
 
     $scope.watch = function() {
