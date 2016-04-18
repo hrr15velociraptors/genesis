@@ -11,6 +11,7 @@ angular.module('genesis.auction', [])
   socket.on('end_auc', function (data) {
     console.log(data);
     $scope.ended = true;
+    $scope.auctionBody = {'width':'100%, opacity: 1'};
     $scope.winner = data.winner;
     $scope.auctionData = data.auction;
   });
@@ -41,6 +42,10 @@ angular.module('genesis.auction', [])
         $scope.bidData.amount = data.cprice;
         $scope.ended = !(data.status === "Live");
         $scope.winner = data.winner || '(none)'
+        //center body after auction ends
+        if ($scope.ended) {
+          $scope.auctionBody = {'width':'100%', opacity: 1};
+        }
         if (!data)  {
           $scope.DNE();
         }
