@@ -19,28 +19,31 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## "Real" Auctions ##
-  > In a buyer's market, seeing is believing! No need to take chances with a low-priced product, let Genesis put you at ease.
+  > In a buyer's market, seeing is believing! No more gambling on sparse customer reviews, let Genesis put you at ease.
 
 ## Video-based Auctions ##
- > Ever wondered what a well-priced "lightly worn couch" actually looked like (beyond the too-good-to-be-true online pics)? Now you can verify the condition of the couch before you go buy it, thanks to live-video chat.
+ > Ever wondered what a low-priced "lightly worn couch" actually looked like (beyond the too-good-to-be-true online pics)? Now you can verify the condition of the couch before you show up to buy it, thanks to genesis.
 
 ## Summary ##
-  >
-
+  > Using cutting-edge p2p technology, genesis fosters high-quality auctions that enable customers to virtually access products and their sellers live, prior 
+  > to committing to a responsible bid.
+  
 ## Problem ##
-  > Describe the problem your product solves.
+  > Buyer beware.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Seller beware, you're live.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "I used to cringe when buying things on Craigslist, so I thought there could exist an affordable way to minimize risk in buying a stranger's things and meeting them." - Artem Svjatickis
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > 1. Create a profile
+  > 2. Peruse/setup auction pages
+  > 3. Sell products live/ bid to win a good deal
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+ > "I won a slightly dinged $160 surfboard listed on [amazon.com](http://www.amazon.com/California-Board-Company-Fish-Surfboard/dp/B00FZ9TYGW/ref=sr_1_13?ie=UTF8&qid=1460934406&sr=8-13&keywords=surfboard) for $50 on genesis... it was dope!" - Johnny from El Paso, TX
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+## Call to Action ##
+  > Join the next generation of smart buyers [Genesis](https://raptorgenesis.herokuapp.com)

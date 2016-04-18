@@ -11,14 +11,14 @@
   - style/...
   - test/...
   - chore/...
-1. Make commits to your feature branch. Prefix each commit like so:
-  - (feat) Add a new feature
-  - (fix) Fix bug [Fixes #0]
-  - (docs) Change documentation
-  - (style) Change formatting, add missing semicolons, etc; no code change
-  - (refactor) Refactor production code
-  - (test) Add missing tests, refactor tests; no production code change
-  - (chore) Update grunt tasks, etc; no production code change
+1. Make commits to your feature branch. Prefix each commit logically, as example:
+  - (feat) Adds a new feature
+  - (fix) Fixes bug [Fixes #0]
+  - (docs) Changes documentation
+  - (style) Changes formatting, add missing semicolons, etc; no code changes
+  - (refactor) Refactors production code
+  - (test) Adds missing tests, refactors tests; no production code changes
+  - (chore) Updates grunt tasks, etc; no production code changes
 1. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a [pull request][]
    directly to master. Include a description of your changes.
 1. Your pull request will be reviewed by another maintainer. The point of code
@@ -27,7 +27,8 @@
    requests you make a change you don't understand, ask them why.
 1. Fix any issues raised by your code reviewer, and push your fixes as a single
    new commit.
-1. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits.
+1. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits unless given
+   explicit consent.
 
 ## Detailed Workflow
 
@@ -36,12 +37,12 @@
 Use github’s interface to make a fork of the repo, then add that repo as an upstream remote:
 
 ```
-git remote add upstream https://github.com/remotebeta-labs/<NAME_OF_REPO>.git
+git remote add upstream https://github.com/hrr15velociraptors/genesis.git
 ```
 
 ### Cut a namespaced feature branch from master
 
-Your branch should follow this naming convention:
+Your branch does not have to follow this naming convention, but it is encouraged:
   - feat/...
   - fix/...
   - docs/...
@@ -61,13 +62,13 @@ git checkout -b `your-branch-name`
 ### Make commits to your feature branch. 
 
 Prefix each commit like so
-  - (feat) Add a new feature
-  - (fix) Fix bug [Fixes #0]
-  - (docs) Change documentation
-  - (style) Change formatting, add missing semicolons, etc; no code change
-  - (refactor) Refactor production code
-  - (test) Add missing tests, refactor tests; no production code change
-  - (chore) Update grunt tasks, etc; no production code change
+  - (feat) Adds a new feature
+  - (fix) Fixes bug [Fixes #0]
+  - (docs) Changes documentation
+  - (style) Changes formatting, adds missing semicolons, etc; no code changes
+  - (refactor) Refactors production code
+  - (test) Adds missing tests, refactors tests; no production code changes
+  - (chore) Updates grunt tasks, etc; no production code changes
 
 Make changes and commits on your branch, and make sure that you
 only make changes that are relevant to this branch. If you find
@@ -76,13 +77,13 @@ changes.
 
 #### Commit Message Guidelines
 
-- Commit messages should be written in the present tense; e.g. "Fix continuous
-  integration script".
+- Commit messages should be written in the third person present tense; e.g. they should read
+  as: commit "Fixes continuous integration script".
 - The first line of your commit message should be a brief summary of what the
   commit changes. Aim for about 70 characters max. Remember: This is a summary,
   not a detailed description of everything that changed.
 - If you want to explain the commit in more depth, following the first line should
-  be a blank line and then a more detailed description of the commit. This can be
+  be a blank line and then a more detailed description of the commit bulleted by a concise list of *. This can be
   as detailed as you want, so dig into details here and keep the first line short.
 - Read more about making great commit messages here:
   http://karma-runner.github.io/0.8/dev/git-commit-msg.html
@@ -149,19 +150,19 @@ Thanks for contributing!
 ### Guidelines
 
 1. Uphold the current code standard:
-    - Keep your code [DRY][].
-    - Apply the [boy scout rule][].
+    - Keep your code [DRY](http://code.tutsplus.com/tutorials/3-key-software-principles-you-must-understand--net-25161).
+    - Apply the [boy scout rule](http://www.scouting.org/filestore/membership/pdf/BSA_Rules_and_Regulations.pdf).
     - Follow [STYLE-GUIDE.md](STYLE-GUIDE.md)
-1. Run the [tests][] before submitting a pull request.
+1. Run [tests] before submitting a pull request.
 1. Tests are very, very important. Submit tests if your pull request contains
    new, testable behavior.
-1. Your pull request is comprised of a single ([squashed][]) commit.
+1. Your pull request is comprised of a the original commit history of your work, NOT a single ([squashed][]) commit.
 
 ## Checklist:
 
 This is just to help you organize your process
 
-- [ ] Did I cut my work branch off of master (don't cut new branches from existing feature brances)?
+- [ ] Did I cut my work branch off of master (don't cut new branches from existing feature branches)?
 - [ ] Did I follow the correct naming convention for my branch?
 - [ ] Is my branch focused on a single main change?
  - [ ] Do all of my changes directly relate to this change?

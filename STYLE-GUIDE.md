@@ -1,8 +1,11 @@
+## Inspired from Airbnb
+[ES5](https://github.com/airbnb/javascript/tree/master/es5)
+
 ### Indentation
 
 When writing any block of code that is logically subordinate to the line immediately before and after it, that block should be indented two spaces more than the surrounding lines
 
-* Do not put any tab characters anywhere in your code. You would do best to stop pressing the tab key entirely.
+* Do not put any tab characters anywhere in your code unless your text editor is set to 2 spaces.
 * Increase the indent level for all blocks by two extra spaces
     * When a line opens a block, the next line starts 2 spaces further in than the line that opened
 
@@ -359,7 +362,7 @@ When writing any block of code that is logically subordinate to the line immedia
 
 ### HTML
 
-* Do not use ids for html elements. Use a class instead.
+* Avoid using ids for html elements. Use a class instead.
 
     ```html
     <!-- good -->
