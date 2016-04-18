@@ -13,7 +13,7 @@ angular.module('genesis.video', ['pubnub.angular.service'])
   $scope.toggle = function() {
     console.log('TOGGLE BEING CALLED');
     $scope.on = Video.toggle($scope.on);
-    $scope.apply();
+    $scope.$apply();
   };
 
   // set owner property on $scope
@@ -40,19 +40,19 @@ angular.module('genesis.video', ['pubnub.angular.service'])
           console.log('OCCUPANCY BEING ADDED');
           $scope.audience = occupancy;
         });
-        $scope.apply();
+        $scope.$apply();
     };
 
     $scope.watch = function() {
         Video.watch(pub_sub, id, function(occupancy) {
           $scope.audience = occupancy;
         });
-        $scope.apply();
+        $scope.$apply();
     };
 
     $scope.end = function() {
         Video.end(pub_sub, id);
-        $scope.apply();
+        $scope.$apply();
     };
 
   });
