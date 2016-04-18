@@ -35,7 +35,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // PubNub Video Functionality
   var video_out  = document.getElementById("vid-box");
-  var here_now   = document.getElementById('here-now');
+  var here_now   = 0;
   var streamName;
 
   // public broadcasting CHANGE HARDCODE streamname to param
@@ -54,7 +54,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
       ctrl.addLocalStream(video_out);
       ctrl.stream();  // Begin streaming video
     });
-    ctrl.streamPresence(function(m){ here_now.innerHTML=m.occupancy; });
+    ctrl.streamPresence(function(m){ here_now = m.occupancy; });
     return false;  // So form does not submit
   };
 
@@ -99,6 +99,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
   };
 
   return {
+    here_now: here_now,
     stream: stream,
     watch: watch,
     end: end,
