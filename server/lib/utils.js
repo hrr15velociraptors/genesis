@@ -50,12 +50,12 @@ Scheduler.prototype.done = function () {
           }
           if (winner) {
             User.findById(winner, function (err, user) {
-              var io = require('./../index').io;
-              io.emit('end_auc', {winner: user.username, auction: auction});
+              var socket = require('./../index').socket;
+              socket.emit('end_auc', {winner: user.username, auction: auction});
             })
           } else {
-            var io = require('./../index').io;
-            io.emit('end_auc', {winner: '(none)', auction: auction});
+            var socket = require('./../index').socket;
+            socket.emit('end_auc', {winner: '(none)', auction: auction});
           }
        });
   })

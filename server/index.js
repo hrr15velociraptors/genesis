@@ -9,12 +9,12 @@ var subscribe_key = process.env.PUBNUB_SUBSCRIBE_KEY;
 app.get('/keys', function(req, res) {
   res.send([publish_key, subscribe_key]);
 });
-
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 io.on('connection', function(socket){
   console.log('a user connected');
+  module.exports.socket = socket;
 });
 
 http.listen(port, function () {

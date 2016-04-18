@@ -17,7 +17,9 @@ angular.module('genesis.auction', [])
   });
 
   socket.on('bid', function (data) {
+    $scope.auctionData.bids = data.bids;
     $scope.auctionData.cprice = data.cprice;
+    $scope.$apply();
   });
 
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
@@ -41,7 +43,7 @@ angular.module('genesis.auction', [])
         $scope.bidData.auction = data._id;
         $scope.bidData.amount = data.cprice;
         $scope.ended = !(data.status === "Live");
-        $scope.winner = data.winner || '(none)'
+        $scope.winner = data.winner || '(none)';
         //center body after auction ends
         if ($scope.ended) {
           $scope.auctionBody = {'width':'100%', opacity: 1};
