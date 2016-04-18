@@ -8,12 +8,12 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
   // pull user from browser local storage
   var user = JSON.parse($window.localStorage.getItem('com.genesis')).username;
   var pub_sub;
-  
+
   // hide chat box
   $('.chat-box').on('click', function(e) {
     $('.chat-box').hide();
   });
-  
+
   // reveal chat box
   $('.message-box').on('click', function(e) {
     $('.chat-box').show();
@@ -52,7 +52,7 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
                   date: moment().format("hh:mm:ss")
               },
               callback: function(m) {
-                  console.log(m);
+                  // console.log(m);
               }
           });
           // Reset the messageContent input
@@ -69,11 +69,11 @@ angular.module('genesis.chat', ['pubnub.angular.service'])
       // Listening to messages sent.
       $scope.$on(Pubnub.getMessageEventNameFor($scope.channel), function(ngEvent, m) {
           $scope.$apply(function() {
-            console.log('this is an ng event');
-            console.log(ngEvent);
-            console.log('here is the incoming message:');
-            console.log(m.sender_uuid);
-              $scope.messages.unshift(m);
+            // console.log('this is an ng event');
+            // console.log(ngEvent);
+            // console.log('here is the incoming message:');
+            // console.log(m.sender_uuid);
+            $scope.messages.unshift(m);
           });
       });
 
