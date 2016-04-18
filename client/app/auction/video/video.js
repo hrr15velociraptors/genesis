@@ -36,15 +36,15 @@ angular.module('genesis.video', ['pubnub.angular.service'])
     $scope.stream = function() {
         Video.stream(pub_sub, id, function(m) {
           $scope.audience = m.occupancy;
+          $scope.$apply();
         });
-        $scope.$apply();
     };
 
     $scope.watch = function() {
         Video.watch(pub_sub, id, function(m) {
           $scope.audience = m.occupancy;
+          $scope.$apply();
         });
-        $scope.$apply();
     };
 
     $scope.end = function() {
