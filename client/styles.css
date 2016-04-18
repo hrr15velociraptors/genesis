@@ -8,6 +8,14 @@ video {
   width: 100%;
 }
 
+.col-md-6 {
+  opacity: .7;
+  background-color: white;
+  border-radius: 50px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 #vid-box {
     max-height: 600px;
     /*min-width: 300px;*/
@@ -37,11 +45,6 @@ img.avatar
     right: 20px;
     top: 220px;
     width: 40%;
-}
-
-
-ul.chat:hover {
-  display: hidden;
 }
 
 .chat ul

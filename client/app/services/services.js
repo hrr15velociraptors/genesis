@@ -36,8 +36,8 @@ angular.module('genesis.services', ['pubnub.angular.service'])
   var here_now   = 0;
   var streamName;
 
-  // public broadcasting CHANGE HARDCODE streamname to param
-  var stream = function(keys, id) {
+  // public video broadcasting on id channel w/ api keys
+  var stream = function(keys, id, cb) {
     var phone = window.phone = PHONE({
         number        : id, // listen on ID of auction URL
         publish_key: keys[0], // Your Pub Key
@@ -47,6 +47,8 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         ssl : (('https:' == document.location.protocol) ? true : false)
 
     });
+    
+    // video controller
     var ctrl = window.ctrl = CONTROLLER(phone);
     ctrl.ready(function(){
       ctrl.addLocalStream(video_out);

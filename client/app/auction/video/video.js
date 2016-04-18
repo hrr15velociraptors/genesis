@@ -1,12 +1,14 @@
 angular.module('genesis.video', ['pubnub.angular.service'])
 
 .controller('VideoController', function($scope, $window, $location, Keys, Video, Auction) {
-  $scope.here_now = Video.here_now;
 
-  //use ID as channel
+  // use ID on URL as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/15
+  
+  // state of video buttons
   $scope.on = false;
-
+  $scope.here_now = Video.here_now;
+  
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   $scope.toggle = function() {
@@ -33,7 +35,9 @@ angular.module('genesis.video', ['pubnub.angular.service'])
 
     // PubNub Video Functionality
     $scope.stream = function() {
-        Video.stream(pub_sub, id);
+        Video.stream(pub_sub, id, function(occupancy) {
+          $scope.audience = occupancy;
+        });
     };
 
     $scope.watch = function() {
