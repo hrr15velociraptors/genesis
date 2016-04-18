@@ -9,11 +9,11 @@ angular.module('genesis.auction', [])
   var socket = io();
 
   socket.on('end_auc', function (data) {
-    console.log(data);
     $scope.ended = true;
     $scope.auctionBody = {'width':'100%, opacity: 1'};
     $scope.winner = data.winner;
     $scope.auctionData = data.auction;
+    $scope.$apply();
   });
 
   socket.on('bid', function (data) {
