@@ -47,19 +47,19 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         ssl : (('https:' == document.location.protocol) ? true : false)
 
     });
-    
+
     // video controller
     var ctrl = window.ctrl = CONTROLLER(phone);
     ctrl.ready(function(){
       ctrl.addLocalStream(video_out);
       ctrl.stream();  // Begin streaming video
     });
-    ctrl.streamPresence(function(m){ here_now = m.occupancy; });
+    ctrl.streamPresence(function(m){ cb(m.occupancy) ; });
     return false;  // So form does not submit
   };
 
   //ID is auction URL channel
-  var watch = function(keys, id){
+  var watch = function(keys, id, cb){
     var phone = window.phone = PHONE({
         number        : "Viewer" + Math.floor(Math.random()*100), // Random name
         publish_key: keys[0],
@@ -82,7 +82,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         session.connected(function(session){ video_out.appendChild(session.video); });
         session.ended(function(session) {ctrl.getVideoElement(session.number).remove(); });
     });
-    ctrl.streamPresence(function(m){ here_now.innerHTML=m.occupancy; });
+    ctrl.streamPresence(function(m){ cb(m.occupancy); });
     return false;  // Prevent form from submitting
   };
 

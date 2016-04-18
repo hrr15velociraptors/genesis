@@ -7,11 +7,11 @@ angular.module('genesis.video', ['pubnub.angular.service'])
 
   // state of video buttons
   $scope.on = false;
-  $scope.here_now = Video.here_now;
 
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   $scope.toggle = function() {
+    console.log('TOGGLE BEING CALLED');
     $scope.on = Video.toggle($scope.on);
     $scope.apply();
   };
@@ -37,13 +37,16 @@ angular.module('genesis.video', ['pubnub.angular.service'])
     // PubNub Video Functionality
     $scope.stream = function() {
         Video.stream(pub_sub, id, function(occupancy) {
+          console.log('OCCUPANCY BEING ADDED');
           $scope.audience = occupancy;
         });
         $scope.apply();
     };
 
     $scope.watch = function() {
-        Video.watch(pub_sub, id);
+        Video.watch(pub_sub, id, function(occupancy) {
+          $scope.audience = occupancy;
+        });
         $scope.apply();
     };
 
