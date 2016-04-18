@@ -1,21 +1,23 @@
 angular.module('genesis.chat', ['pubnub.angular.service'])
 
 .controller('ChatController', function ($window, $scope, $location, Auth, Pubnub, Keys, Auction) {
-  // $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
 
   //set URL ID as channel
   var id = $location.path().split("/")[2] + 'chat'; //domain.com/auctions/155125125215
 
-  //disconnect when leaving page
-  $scope.$on('$locationChangeStart', function(event) {
-    // SOCKET.IO => we need to remove user from users array on backend
-    // disconnect from Pubnub message/video channels
-  });
-
   // pull user from browser local storage
   var user = JSON.parse($window.localStorage.getItem('com.genesis')).username;
-
   var pub_sub;
+  
+  // hide chat box
+  $('.chat-box').on('click', function(e) {
+    $('.chat-box').hide();
+  });
+  
+  // reveal chat box
+  $('.message-box').on('click', function(e) {
+    $('.chat-box').show();
+  });
 
   // on controller load, grab keys from index.js
   Keys.then(function(pub_sub) {

@@ -47,11 +47,6 @@ img.avatar
     width: 40%;
 }
 
-
-ul.chat:hover {
-  display: hidden;
-}
-
 .chat ul
 {
   width: 150%;

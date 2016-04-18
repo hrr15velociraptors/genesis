@@ -1,6 +1,6 @@
 <div id="auction">
 
-    <h4>Auction Chat</h4>
+    <h4 style="text-align: center;"><strong>Auction Chat</strong></h4>
     <!-- Post messages -->
     <div class="message-box">
       <form ng-submit="sendMessage()" class="container">
@@ -13,7 +13,7 @@
     </div>
 
     <!-- View messages -->
-    <ul>
+    <ul class="chat-box">
      <li ng-repeat="message in messages">
        <img class="avatar" src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}">
        <span class="title"> {{message.sender_uuid}}: {{ message.content }}</span>
