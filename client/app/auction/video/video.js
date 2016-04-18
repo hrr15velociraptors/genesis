@@ -38,10 +38,12 @@ angular.module('genesis.video', ['pubnub.angular.service'])
         Video.stream(pub_sub, id, function(occupancy) {
           $scope.audience = occupancy;
         });
+        $scope.apply();
     };
 
     $scope.watch = function() {
         Video.watch(pub_sub, id);
+        $scope.apply();
     };
 
     $scope.end = function() {
