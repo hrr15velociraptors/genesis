@@ -1,6 +1,7 @@
 angular.module('genesis.video', ['pubnub.angular.service'])
 
 .controller('VideoController', function($scope, $window, $location, Keys, Video, Auction) {
+  $scope.here_now = Video.here_now;
 
   //use ID as channel
   var id = $location.path().split("/")[2]; //domain.com/auctions/15
@@ -16,7 +17,6 @@ angular.module('genesis.video', ['pubnub.angular.service'])
   $scope.getAuction = function() {
     Auction.getAuction(id)
       .then(function (data) {
-        console.log(data);
         $scope.owner = data.owner === $scope.username ? true: false;
         //show auction DNE error
         if (!data)  {

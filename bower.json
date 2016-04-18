@@ -21,6 +21,7 @@
     "jquery": "^2.2.3",
     "moment": "^2.12.0",
     "pubnub": "^3.14.5",
-    "pubnub-angular": "^3.1.1"
+    "pubnub-angular": "^3.1.1",
+    "socket.io-client": "^1.4.5"
   }
 }

@@ -3,10 +3,20 @@ var db = require('./../db/config');
 var Bid = db.Bid;
 var Auction = db.Auction;
 var User = db.User;
+var Scheduler = require('./utils').Scheduler;
 
 module.exports.postBid = function (req, res) {
+  var bid = req.body;
+  bid.user = req.user._id;
   new Bid(req.body).save(function () {
-    res.status(200).send('ok');
+    Auction.findOneAndUpdate({_id: bid.auction}, {$set: {cprice: bid.amount}}, {new: true}, function (err, auction) {
+      if (err) {
+        res.status(404).send('err');
+      }
+      var io = require("./../index").io;
+      io.emit('bid', {cprice: auction.cprice});
+      res.json(auction);
+    });
   });
 }
 
@@ -18,6 +28,10 @@ module.exports.postAuction = function (req, res) {
   var auction = req.body;
   auction.user = req.user._id;
   new Auction(auction).save(function (err, newAuction) {
+    if (err) {
+      console.log(err);
+    }
+    var aucSch = new Scheduler(newAuction.end, newAuction._id);
     res.json(newAuction);
   });
 }
@@ -32,6 +46,7 @@ module.exports.getAuction = function (req, res) {
 }
 
 module.exports.getAuctions = function (req, res) {
+  // return all auctions in database
   Auction.find({}, function (err, auctions) {
     if(err) {
       console.log(err);
@@ -41,11 +56,13 @@ module.exports.getAuctions = function (req, res) {
 };
 
 module.exports.modifyAuction = function (req, res) {
+  // not done yet
   res.status(200).send('ok');
 
 }
 
 module.exports.deleteAuction = function (req, res) {
+  // not done yet
   res.status(200).send('ok');
 }
 

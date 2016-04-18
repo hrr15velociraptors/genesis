@@ -10,7 +10,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
         username: username
       }
     }).then(function (res) {
-      console.log('username is '+ username);
       return res.data;
     })
   };
@@ -24,7 +23,6 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // Wrap videochat controller in promise, ensure access to keys
   return $http.get('/keys').then(function(keys) {
-      console.log('here are the keys on client:');
       // console.log(keys);
       var pub_sub = keys.data;
       return pub_sub;
@@ -35,7 +33,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
 
   // PubNub Video Functionality
   var video_out  = document.getElementById("vid-box");
-  var here_now   = document.getElementById('here-now');
+  var here_now   = 0;
   var streamName;
 
   // public broadcasting CHANGE HARDCODE streamname to param
@@ -54,7 +52,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
       ctrl.addLocalStream(video_out);
       ctrl.stream();  // Begin streaming video
     });
-    ctrl.streamPresence(function(m){ here_now.innerHTML=m.occupancy; });
+    ctrl.streamPresence(function(m){ here_now = m.occupancy; });
     return false;  // So form does not submit
   };
 
@@ -71,7 +69,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     var ctrl = window.ctrl = CONTROLLER(phone, true);
     ctrl.ready(function(){
       ctrl.isStreaming(id, function(isOn){
-        // if (isOn) 
+        // if (isOn)
         ctrl.joinStream(id);
         // else alert("User is not streaming!");
       });
@@ -99,6 +97,7 @@ angular.module('genesis.services', ['pubnub.angular.service'])
   };
 
   return {
+    here_now: here_now,
     stream: stream,
     watch: watch,
     end: end,
@@ -148,10 +147,19 @@ angular.module('genesis.services', ['pubnub.angular.service'])
     $( ".auctionBody" ).append("Link Here");
   };
 
+  var bid = function (bid) {
+    return $http({
+      method: 'POST',
+      url: '/api/bid',
+      data: bid
+    });
+  }
+
   return {
     getAuctions: getAuctions,
     getAuction: getAuction,
     createAuction: createAuction,
+    bid: bid,
     DNE: DNE
   };
 });
