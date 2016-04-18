@@ -1,4 +1,4 @@
-angular.module('genesis.home', [])
+angular.module('genesis.home', ['ngAnimate', 'ui.bootstrap'])
 
 .controller('HomeController', function($scope, $window, Auth, Auction) {
 
