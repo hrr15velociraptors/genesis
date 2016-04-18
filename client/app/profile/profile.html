@@ -16,21 +16,23 @@
                 	<div class="col-sm-9">
                       <ul class="nav nav-tabs" id="myTab">
                         <li class="active"><a href="#myauctions" data-toggle="tab">MyAuctions</a></li>
-                        <li><a href="#mybids" data-toggle="tab">MyBids</a></li>
+                        <!-- <li><a href="#mybids" data-toggle="tab">MyBids</a></li> -->
                       </ul>
                           <table class="table table-hover">
                             <thead>
                               <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>Duration</th>
+                                <th>End</th>
+                                <th>Status</th>
                               </tr>
                             </thead>
                             <tbody id="items">
                               <tr ng-repeat="auction in user.auctions" ng-click="navToAuction(auction.auctionId)" >
                                 <td>{{ auction.auctionId }}</td>
                                 <td>{{ auction.title }}</td>
-                                <td>{{ auction.duration}}</td>
+                                <td>{{ auction.end | date : 'medium' : 'PT'}}</td>
+                                <td>{{ auction.status }}</td>
                               </tr>
                             </tbody>
                           </table>
