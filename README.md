@@ -31,6 +31,8 @@
 - Mongoose ^4.4.11
 - Passport ^0.3.2
 - MongoDB
+- [Socket.IO](http://socket.io/) ^1.4.5
+  + Broadcasting bid updates in real-time
 - [PubNub](https://www.pubnub.com/docs/web-javascript/data-streams-publish-and-subscribe)
   + Developer publish and subscribe [API keys](https://www.pubnub.com/docs): 
   ``` javascript

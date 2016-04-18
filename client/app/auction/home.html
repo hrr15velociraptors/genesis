@@ -1,12 +1,56 @@
 <div ui-view="header"></div>
-<div class="containter">
+<div class="container">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <div class="row home" >
     <div class="col-lg-12">
         <h4>Live Auctions</h4>
         <hr>
     </div>
   </div>
-    <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="auction in allAuctions">
+
+      <div style="height: auto">
+      <!-- slide = auction, slides = allAuctions, id = auctionId -->
+        <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+          <uib-slide ng-repeat="auction in allAuctions | filter:searchText track by auction.auctionId" index="auction.auctionId">
+            <!-- <img ng-src="{{auction.title}}" style="margin:auto;"> -->
+        
+            <div class="thumbnail active aucthumb" ng-click="navToAuction(auction.auctionId)">
+              <h5>{{ auction.title }}</h5>
+              <hr>
+              <div>Status: <strong> {{ auction.status }} </strong></div>
+              <div>Price: <strong> {{ auction.sprice | currency }} </strong></div>
+              <div>Bids: <strong> {{ auction.bids.length }} </strong></div>
+              <div>Ends at: <strong> {{ auction.end | date : 'shortTime' : 'PT'}} </strong></div>
+              <hr>
+            </div>
+            <div class="carousel-caption">
+              <!-- <p>{{auction.title}}</p> -->
+            </div>
+          </uib-auction>
+        </uib-carousel>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="noWrapSlides">
+              Disable auction Looping
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+        <label>Search: <input ng-model="searchText"></label>
+        </div>
+      </div>
+    </div>
+    <div class="row home" >
+      <div class="col-lg-12">
+          <h4>Ended Auctions</h4>
+          <hr>
+      </div>
+    </div>
+    <div class="container">
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="auction in allAuctions | byEnded:auctions">
       <div class="thumbnail active aucthumb" ng-click="navToAuction(auction.auctionId)">
 
         <h5>{{ auction.title }}</h5>
@@ -16,22 +60,6 @@
         <div>Bids: <strong> {{ auction.bids.length }} </strong></div>
         <div>Ends at: <strong> {{ auction.end | date : 'shortTime' : 'PT'}} </strong></div>
       </div>
-    </div>
-
-    <!-- Carousel Bootstrap -->
-    <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-targe="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-targe="#myCarousel" data-slide-to="1" ></li>
-        <li data-targe="#myCarousel" data-slide-to="2" ></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active"></div>
-        <div class="item"></div>
-        <div class="item"></div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"></a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"></a>
-
     </div>
- --></div>
+</div>
