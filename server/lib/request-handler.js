@@ -3,6 +3,7 @@ var db = require('./../db/config');
 var Bid = db.Bid;
 var Auction = db.Auction;
 var User = db.User;
+var Scheduler = require('./utils').Scheduler;
 
 module.exports.postBid = function (req, res) {
   var bid = req.body;
@@ -28,6 +29,7 @@ module.exports.postAuction = function (req, res) {
     if (err) {
       console.log(err);
     }
+    var aucSch = new Scheduler(newAuction.end, newAuction._id);
     res.json(newAuction);
   });
 }
