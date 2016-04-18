@@ -3,7 +3,7 @@
 ## General Workflow
 
 1. Fork the repo
-2. Cut a namespaced feature branch from master
+1. Cut a namespaced feature branch from master
   - feat/...
   - fix/...
   - docs/...
@@ -11,7 +11,7 @@
   - style/...
   - test/...
   - chore/...
-3. Make commits to your feature branch. Prefix each commit logically, as example:
+1. Make commits to your feature branch. Prefix each commit logically, as example:
   - (feat) Adds a new feature
   - (fix) Fixes bug [Fixes #0]
   - (docs) Changes documentation
@@ -19,15 +19,15 @@
   - (refactor) Refactors production code
   - (test) Adds missing tests, refactors tests; no production code changes
   - (chore) Updates grunt tasks, etc; no production code changes
-4. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a [pull request][]
+1. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a [pull request][]
    directly to master. Include a description of your changes.
-5. Your pull request will be reviewed by another maintainer. The point of code
+1. Your pull request will be reviewed by another maintainer. The point of code
    reviews is to help keep the codebase clean and of high quality and, equally
    as important, to help you grow as a programmer. If your code reviewer
    requests you make a change you don't understand, ask them why.
-6. Fix any issues raised by your code reviewer, and push your fixes as a single
+1. Fix any issues raised by your code reviewer, and push your fixes as a single
    new commit.
-7. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits unless given
+1. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits unless given
    explicit consent.
 
 ## Detailed Workflow
@@ -153,10 +153,10 @@ Thanks for contributing!
     - Keep your code [DRY](http://code.tutsplus.com/tutorials/3-key-software-principles-you-must-understand--net-25161).
     - Apply the [boy scout rule](http://www.scouting.org/filestore/membership/pdf/BSA_Rules_and_Regulations.pdf).
     - Follow [STYLE-GUIDE.md](STYLE-GUIDE.md)
-2. Run [tests] before submitting a pull request.
-3. Tests are very, very important. Submit tests if your pull request contains
+1. Run [tests] before submitting a pull request.
+1. Tests are very, very important. Submit tests if your pull request contains
    new, testable behavior.
-4. Your pull request is comprised of a the original commit history of your work, NOT a single ([squashed][]) commit.
+1. Your pull request is comprised of a the original commit history of your work, NOT a single ([squashed][]) commit.
 
 ## Checklist:
 

@@ -45,5 +45,5 @@ Once the project moves into development, the press release can be used as a touc
 ## Customer Quote ##
  > "I won a slightly dinged $160 surfboard listed on [amazon.com](http://www.amazon.com/California-Board-Company-Fish-Surfboard/dp/B00FZ9TYGW/ref=sr_1_13?ie=UTF8&qid=1460934406&sr=8-13&keywords=surfboard) for $50 on genesis... it was dope!" - Johnny from El Paso, TX
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+## Call to Action ##
+  > Join the next generation of smart buyers [Genesis](https://raptorgenesis.herokuapp.com)
