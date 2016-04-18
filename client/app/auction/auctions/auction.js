@@ -18,7 +18,7 @@ angular.module('genesis.auction', [])
 
   socket.on('bid', function (data) {
     $scope.auctionData.cprice = data.cprice;
-    $scope.apply();
+    $scope.$apply();
   });
 
   $scope.username = JSON.parse($window.localStorage.getItem('com.genesis')).username;
